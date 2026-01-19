@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>नया ऐप जोड़ें - OP ASHISH YT</title>
+    
+    <!-- Professional CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/admin-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .form-header h2 {
+            color: #2563eb;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .form-input, .form-textarea, .form-file {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus, .form-textarea:focus, .form-file:focus {
+            border-color: #2563eb;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .file-info {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+            transform: translateY(-2px);
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border-left: 4px solid #10b981;
+        }
+        
+        .alert-error {
+            background: #fee2e2;
+            color: #dc2626;
+            border-left: 4px solid #dc2626;
+        }
+        
+        .preview-box {
+            margin-top: 15px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 10px;
+            background: #f9fafb;
+        }
+        
+        .preview-box img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 5px;
+        }
+        
+        .char-count {
+            font-size: 0.85rem;
+            color: #6b7280;
+            text-align: right;
+            margin-top: 5px;
+        }
+        
+        .form-note {
+            background: #f0f9ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .form-note h4 {
+            color: #2563eb;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-note ul {
+            color: #4b5563;
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .form-note li {
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+    
+    <script>
+        // Check login status
+        if(localStorage.getItem('admin_logged_in') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- Mobile Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="admin-sidebar" id="adminSidebar">
+            <div class="sidebar-header">
+                <img src="../assets/img/logo.png" alt="OP ASHISH YT" onerror="this.src='../assets/img/default-logo.png'">
+                <h3>OP ASHISH YT</h3>
+                <p>एडमिन कंट्रोल पैनल</p>
+            </div>
+            
+            <div class="sidebar-menu">
+                <a href="dashboard.html" class="menu-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    डैशबोर्ड
+                </a>
+                
+                <a href="add-app.html" class="menu-item active">
+                    <i class="fas fa-plus-circle"></i>
+                    नया ऐप जोड़ें
+                </a>
+                
+                <a href="../index.html" target="_blank" class="menu-item">
+                    <i class="fas fa-external-link-alt"></i>
+                    वेबसाइट देखें
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar" id="userAvatar">A</div>
+                    <div class="user-info">
+                        <h4 id="userName">Admin</h4>
+                        <p id="userRole">Super Admin</p>
+                    </div>
+                </div>
+                <button class="logout-btn" onclick="window.location.href='logout.html'">
+                    <i class="fas fa-sign-out-alt"></i> लॉगआउट
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="admin-main">
+            <!-- Header -->
+            <div class="admin-header">
+                <div class="header-left">
+                    <h1><i class="fas fa-plus-circle"></i> नया ऐप जोड़ें</h1>
+                    <p id="welcomeMessage">वेलकम, Admin!</p>
+                </div>
+                <div class="header-actions">
+                    <a href="dashboard.html" class="admin-btn admin-btn-secondary">
+                        <i class="fas fa-arrow-left"></i> डैशबोर्ड
+                    </a>
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <div class="form-box">
+                    <!-- हेडर -->
+                    <div class="form-header">
+                        <h2>
+                            <i class="fas fa-plus-circle"></i>
+                            नया ऐप जोड़ें
+                        </h2>
+                        <p>
+                            नीचे विवरण भरकर अपनी वेबसाइट पर नया MOD APK जोड़ें
+                        </p>
+                    </div>
+                    
+                    <!-- मैसेज एरिया -->
+                    <div id="messageArea" style="display: none;"></div>
+                    
+                    <!-- मुख्य फॉर्म -->
+                    <form id="appForm">
+                        <!-- ऐप नाम -->
+                        <div class="form-group">
+                            <label for="name" class="form-label">
+                                <i class="fas fa-mobile-alt"></i> ऐप का नाम *
+                            </label>
+                            <input type="text" 
+                                   id="name" 
+                                   name="name" 
+                                   class="form-input" 
+                                   placeholder="ऐप का नाम दर्ज करें (जैसे: WhatsApp MOD)"
+                                   required
+                                   maxlength="255">
+                            <div class="char-count" id="nameCount">0/255</div>
+                        </div>
+                        
+                        <!-- विवरण -->
+                        <div class="form-group">
+                            <label for="description" class="form-label">
+                                <i class="fas fa-file-alt"></i> विवरण *
+                            </label>
+                            <textarea id="description" 
+                                      name="description" 
+                                      class="form-textarea"
+                                      placeholder="ऐप की विशेषताएं, MOD क्षमताएं आदि वर्णित करें"
+                                      required></textarea>
+                            <div class="char-count" id="descCount">0 अक्षर</div>
+                        </div>
+                        
+                        <!-- वर्जन और साइज -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="version" class="form-label">
+                                    <i class="fas fa-code-branch"></i> वर्जन *
+                                </label>
+                                <input type="text" 
+                                       id="version" 
+                                       name="version" 
+                                       class="form-input" 
+                                       placeholder="जैसे: 2.23.10.78"
+                                       required
+                                       maxlength="50">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="size" class="form-label">
+                                    <i class="fas fa-hdd"></i> साइज *
+                                </label>
+                                <input type="text" 
+                                       id="size" 
+                                       name="size" 
+                                       class="form-input" 
+                                       placeholder="जैसे: 85 MB"
+                                       required
+                                       maxlength="20">
+                            </div>
+                        </div>
+                        
+                        <!-- लोगो अपलोड -->
+                        <div class="form-group">
+                            <label for="logo" class="form-label">
+                                <i class="fas fa-image"></i> ऐप लोगो *
+                            </label>
+                            <input type="file" 
+                                   id="logo" 
+                                   name="logo" 
+                                   class="form-file"
+                                   accept="image/*"
+                                   required>
+                            <div class="file-info">
+                                अनुमति: JPEG, PNG, GIF, WebP (अधिकतम 2MB)
+                            </div>
+                            <div class="preview-box" id="logoPreview" style="display: none;">
+                                <img id="logoPreviewImg" src="" alt="लोगो प्रीव्यू">
+                                <p>लोगो प्रीव्यू</p>
+                            </div>
+                        </div>
+                        
+                        <!-- APK अपलोड -->
+                        <div class="form-group">
+                            <label for="apk_file" class="form-label">
+                                <i class="fas fa-download"></i> APK फाइल *
+                            </label>
+                            <input type="file" 
+                                   id="apk_file" 
+                                   name="apk_file" 
+                                   class="form-file"
+                                   accept=".apk"
+                                   required>
+                            <div class="file-info">
+                                Android APK फाइल (अधिकतम 200MB)
+                            </div>
+                            <div id="apkInfo" class="file-info" style="display: none;"></div>
+                        </div>
+                        
+                        <!-- MOD फीचर्स -->
+                        <div class="form-group">
+                            <label for="features" class="form-label">
+                                <i class="fas fa-star"></i> MOD फीचर्स (वैकल्पिक)
+                            </label>
+                            <textarea id="features" 
+                                      name="features" 
+                                      class="form-textarea"
+                                      placeholder="प्रत्येक फीचर को नई लाइन पर लिखें
+उदाहरण:
+Blue Tick Hide
+Status Download
+Anti-Delete Messages"></textarea>
+                            <div class="file-info">
+                                प्रत्येक फीचर को नई लाइन पर लिखें
+                            </div>
+                        </div>
+                        
+                        <!-- अपलोड गाइडलाइन्स -->
+                        <div class="form-note">
+                            <h4>
+                                <i class="fas fa-info-circle"></i> अपलोड दिशा-निर्देश:
+                            </h4>
+                            <ul>
+                                <li><strong>लोगो:</strong> PNG, JPG, GIF, WebP | अधिकतम 2MB | वर्गाकार अनुपात अनुशंसित</li>
+                                <li><strong>APK:</strong> Android Package फाइल | अधिकतम 200MB | वैध APK होनी चाहिए</li>
+                                <li>फाइल नाम स्वचालित रूप से सुरक्षित किए जाएंगे</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- फॉर्म एक्शंस -->
+                        <div class="form-actions">
+                            <div>
+                                <a href="dashboard.html" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left"></i> डैशबोर्ड पर वापस
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <button type="submit" class="btn btn-primary" id="submitBtn">
+                                    <i class="fas fa-plus"></i> ऐप जोड़ें
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        // चेरक्टर काउंटर
+        const nameInput = document.getElementById('name');
+        const descInput = document.getElementById('description');
+        const nameCount = document.getElementById('nameCount');
+        const descCount = document.getElementById('descCount');
+        
+        function updateCounters() {
+            nameCount.textContent = nameInput.value.length + '/255';
+            descCount.textContent = descInput.value.length + ' अक्षर';
+            
+            if(descInput.value.length < 50) {
+                descCount.innerHTML += ' <span style="color:#dc2626;">(कम से कम 50 अक्षर अनुशंसित)</span>';
+            }
+        }
+        
+        nameInput.addEventListener('input', updateCounters);
+        descInput.addEventListener('input', updateCounters);
+        updateCounters();
+        
+        // लोगो प्रीव्यू
+        const logoInput = document.getElementById('logo');
+        const logoPreview = document.getElementById('logoPreview');
+        const logoPreviewImg = document.getElementById('logoPreviewImg');
+        
+        logoInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    logoPreviewImg.src = e.target.result;
+                    logoPreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // APK फाइल इनफो
+        const apkInput = document.getElementById('apk_file');
+        const apkInfo = document.getElementById('apkInfo');
+        
+        apkInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if(file) {
+                const fileName = file.name;
+                const fileSize = (file.size / (1024 * 1024)).toFixed(2); // MB में
+                
+                apkInfo.innerHTML = `
+                    <i class="fas fa-check-circle" style="color: #059669;"></i>
+                    <strong>${fileName}</strong> (${fileSize} MB) चयनित
+                `;
+                apkInfo.style.display = 'block';
+            }
+        });
+        
+        // फॉर्म वैलिडेशन
+        document.getElementById('appForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const messageArea = document.getElementById('messageArea');
+            
+            // डेटा एकत्र करें
+            const appData = {
+                name: document.getElementById('name').value.trim(),
+                description: document.getElementById('description').value.trim(),
+                version: document.getElementById('version').value.trim(),
+                size: document.getElementById('size').value.trim(),
+                features: document.getElementById('features').value.trim()
+            };
+            
+            // वैलिडेशन
+            let errors = [];
+            
+            if(appData.name.length < 3) {
+                errors.push('ऐप का नाम कम से कम 3 अक्षर का होना चाहिए');
+            }
+            
+            if(appData.description.length < 50) {
+                errors.push('विवरण कम से कम 50 अक्षर का होना चाहिए');
+            }
+            
+            if(!appData.version) {
+                errors.push('वर्जन दर्ज करें');
+            }
+            
+            if(!appData.size) {
+                errors.push('साइज दर्ज करें');
+            }
+            
+            // फाइल वैलिडेशन
+            const logoFile = logoInput.files[0];
+            const apkFile = apkInput.files[0];
+            
+            if(!logoFile) {
+                errors.push('लोगो फाइल चुनें');
+            } else {
+                const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+                if(!validImageTypes.includes(logoFile.type)) {
+                    errors.push('लोगो एक वैध इमेज फाइल (JPEG, PNG, GIF, WebP) होनी चाहिए');
+                }
+                if(logoFile.size > 2 * 1024 * 1024) { // 2MB
+                    errors.push('लोगो की साइज 2MB से कम होनी चाहिए');
+                }
+            }
+            
+            if(!apkFile) {
+                errors.push('APK फाइल चुनें');
+            } else {
+                if(!apkFile.name.toLowerCase().endsWith('.apk')) {
+                    errors.push('केवल APK फाइलें अपलोड करें');
+                }
+                if(apkFile.size > 200 * 1024 * 1024) { // 200MB
+                    errors.push('APK साइज 200MB से कम होनी चाहिए');
+                }
+            }
+            
+            // एरर दिखाएं
+            if(errors.length > 0) {
+                showMessage(errors.join('<br>'), 'error');
+                return;
+            }
+            
+            // सबमिट बटन डिसेबल करें
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> जोड़ा जा रहा है...';
+            
+            // सिमुलेटेड API कॉल
+            setTimeout(() => {
+                // नया ऐप ID जनरेट करें
+                const newAppId = Date.now(); // यूनिक ID
+                
+                // फाइलों के लिए यूआरएल जनरेट करें (सिमुलेशन)
+                const logoUrl = `../uploads/images/logo_${newAppId}.png`;
+                const apkUrl = `../uploads/apk/app_${newAppId}.apk`;
+                
+                // नया ऐप ऑब्जेक्ट बनाएं
+                const newApp = {
+                    id: newAppId,
+                    name: appData.name,
+                    description: appData.description,
+                    version: appData.version,
+                    size: appData.size,
+                    logo: logoUrl,
+                    apk_file: apkUrl,
+                    downloads: 0,
+                    category: 'tools', // Default category
+                    created_at: new Date().toISOString().split('T')[0],
+                    features: appData.features ? appData.features.split('\n').filter(f => f.trim()) : []
+                };
+                
+                // लोकल स्टोरेज में सेव करें
+                saveAppToLocalStorage(newApp);
+                
+                // सफलता मैसेज
+                showMessage(`🎉 ऐप सफलतापूर्वक जोड़ा गया!<br><strong>${appData.name}</strong> अब वेबसाइट पर उपलब्ध है`, 'success');
+                
+                // फॉर्म रीसेट करें
+                document.getElementById('appForm').reset();
+                logoPreview.style.display = 'none';
+                apkInfo.style.display = 'none';
+                updateCounters();
+                
+                // 3 सेकंड बाद डैशबोर्ड पर रीडायरेक्ट
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 3000);
+                
+            }, 2000);
+        });
+        
+        // लोकल स्टोरेज में ऐप सेव करें
+        function saveAppToLocalStorage(newApp) {
+            // मौजूदा ऐप्स पढ़ें
+            let existingApps = localStorage.getItem('user_apps');
+            if(existingApps) {
+                existingApps = JSON.parse(existingApps);
+            } else {
+                existingApps = [];
+            }
+            
+            // नया ऐप जोड़ें
+            existingApps.push(newApp);
+            
+            // वापस सेव करें
+            localStorage.setItem('user_apps', JSON.stringify(existingApps));
+        }
+        
+        // मैसेज दिखाने का फंक्शन
+        function showMessage(message, type) {
+            const messageArea = document.getElementById('messageArea');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            messageArea.innerHTML = `
+                <div class="alert alert-${type}">
+                    <i class="fas ${type === 'error' ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i>
+                    ${message}
+                </div>
+            `;
+            messageArea.style.display = 'block';
+            
+            // बटन रीसेट करें
+            if(submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-plus"></i> ऐप जोड़ें';
+            }
+            
+            // ऊपर स्क्रॉल करें
+            messageArea.scrollIntoView({ behavior: 'smooth' });
+            
+            // एरर मैसेज 10 सेकंड बाद हटाएं, सक्सेस 5 सेकंड बाद
+            setTimeout(() => {
+                messageArea.style.display = 'none';
+            }, type === 'error' ? 10000 : 5000);
+        }
+        
+        // साइज फील्ड ऑटो फॉर्मेट
+        const sizeInput = document.getElementById('size');
+        sizeInput.addEventListener('blur', function() {
+            let value = this.value.trim();
+            if(value && !value.includes('MB') && !value.includes('GB') && !value.includes('KB')) {
+                this.value = value + ' MB';
+            }
+        });
+        
+        // फीचर्स टेक्स्टएरिया में उदाहरण
+        const featuresInput = document.getElementById('features');
+        featuresInput.addEventListener('focus', function() {
+            if(!this.value) {
+                this.value = `Blue Tick Hide
+Status Download
+Anti-Delete Messages
+Stealth Mode
+No Ads`;
+            }
+        });
+        
+        featuresInput.addEventListener('blur', function() {
+            if(this.value === `Blue Tick Hide
+Status Download
+Anti-Delete Messages
+Stealth Mode
+No Ads`) {
+                this.value = '';
+            }
+        });
+        
+        // पेज लोड होने पर पहले फील्ड पर फोकस
+        window.onload = function() {
+            document.getElementById('name').focus();
+        };
+        
+        // Update user info
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = localStorage.getItem('admin_username') || 'Admin';
+            const userAvatar = document.getElementById('userAvatar');
+            const userName = document.getElementById('userName');
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            
+            if(userAvatar) userAvatar.textContent = username.charAt(0).toUpperCase();
+            if(userName) userName.textContent = username;
+            if(welcomeMessage) welcomeMessage.textContent = `वेलकम, ${username}!`;
+        });
+        
+        // Setup mobile sidebar toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            const sidebar = document.getElementById('adminSidebar');
+            
+            if(sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                    if(sidebarOverlay) sidebarOverlay.classList.toggle('active');
+                });
+            }
+            
+            if(sidebarOverlay && sidebar) {
+                sidebarOverlay.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
