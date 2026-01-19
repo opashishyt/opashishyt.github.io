@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OP ASHISH YT - MOD APK Downloads</title>
+    <meta name="description" content="Download MOD APK Games and Apps for free">
+    <meta name="keywords" content="mod apk, android games, free apk, premium apps">
+    
+    <!-- CSS लिंक -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 150px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-box i {
+            font-size: 2rem;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        
+        .stat-box h3 {
+            font-size: 1.8rem;
+            color: #2563eb;
+            margin: 5px 0;
+        }
+        
+        .no-apps {
+            text-align: center;
+            padding: 50px;
+            background: white;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .no-apps i {
+            font-size: 3rem;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: white;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                color: #333;
+            }
+            
+            .user-info {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 1px solid #eee;
+            }
+        }
+        
+        /* डार्क मोड स्टाइल */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .dark-mode-toggle:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .navbar {
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        body.dark-mode .app-card,
+        body.dark-mode .app-item,
+        body.dark-mode .stat-box,
+        body.dark-mode .no-apps {
+            background: #2d2d2d;
+            color: #e0e0e0;
+            border: 1px solid #404040;
+        }
+        
+        body.dark-mode .app-card h3,
+        body.dark-mode .app-item h3 {
+            color: #60a5fa;
+        }
+        
+        body.dark-mode .app-card p,
+        body.dark-mode .app-item p {
+            color: #a0a0a0;
+        }
+        
+        body.dark-mode footer {
+            background: #0f172a;
+        }
+        
+        /* लोडिंग एनिमेशन */
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2563eb;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* टॉप बटन */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .scroll-to-top:hover {
+            background: #1d4ed8;
+            transform: translateY(-5px);
+        }
+        
+        /* नोटिफिकेशन */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: #10b981;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- हेडर -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/img/logo.png" alt="OP ASHISH YT Logo" onerror="this.src='assets/img/default-logo.png'">
+                <span>OP ASHISH YT</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html"><i class="fas fa-home"></i> होम</a>
+                <a href="#featured"><i class="fas fa-star"></i> फीचर्ड</a>
+                <a href="#apps"><i class="fas fa-th-list"></i> सभी ऐप्स</a>
+                <a href="search.html"><i class="fas fa-search"></i> सर्च</a>
+                
+                <!-- यूजर इनफो (डायनामिक) -->
+                <div id="userSection"></div>
+                
+                <!-- डार्क मोड टॉगल -->
+                <button class="dark-mode-toggle" id="darkModeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- हीरो सेक्शन -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>MOD APK ऐप्स और गेम्स डाउनलोड करें</h1>
+            <p>अनलॉक्ड फीचर्स • प्रीमियम कंटेंट • फ्री डाउनलोड</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#featured" class="btn-primary">ऐप्स एक्सप्लोर करें</a>
+                <a href="search.html" class="btn-primary" style="background: transparent; border: 2px solid white;">
+                    <i class="fas fa-search"></i> सर्च ऐप्स
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- स्टैटिस्टिक्स -->
+    <div class="stats">
+        <div class="stat-box">
+            <i class="fas fa-download"></i>
+            <h3 id="totalDownloads">0</h3>
+            <p>कुल डाउनलोड</p>
+        </div>
+        <div class="stat-box">
+            <i class="fas fa-mobile-alt"></i>
+            <h3 id="totalApps">0</h3>
+            <p>कुल ऐप्स</p>
+        </div>
+        <div class="stat-box">
+            <i class="fas fa-users"></i>
+            <h3 id="activeUsers">24/7</h3>
+            <p>सक्रिय यूजर्स</p>
+        </div>
+        <div class="stat-box">
+            <i class="fas fa-star"></i>
+            <h3 id="topRated">100%</h3>
+            <p>रिव्यू रेटिंग</p>
+        </div>
+    </div>
+
+    <!-- लोडिंग स्पिनर -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>ऐप्स लोड हो रहे हैं...</p>
+    </div>
+
+    <!-- फीचर्ड ऐप्स -->
+    <section id="featured" class="featured-apps">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2><i class="fas fa-star"></i> फीचर्ड ऐप्स</h2>
+            <p style="color: #666; max-width: 600px; margin: 0 auto;">सबसे ज्यादा डाउनलोड किए गए टॉप ऐप्स</p>
+        </div>
+        
+        <div class="apps-grid" id="featuredApps">
+            <!-- ऐप्स यहाँ डायनामिक भरे जाएंगे -->
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="#apps" class="btn-download" style="width: auto; padding: 12px 30px;">
+                <i class="fas fa-arrow-down"></i> और ऐप्स देखें
+            </a>
+        </div>
+    </section>
+
+    <!-- सभी ऐप्स -->
+    <section id="apps" class="all-apps">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2><i class="fas fa-th-list"></i> सभी ऐप्स और गेम्स</h2>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <p style="color: #666;">नए ऐप्स को ऊपर देखें। सर्च बार का उपयोग करके स्पेशल ऐप्स ढूंढें।</p>
+                
+                <!-- कैटेगरी फिल्टर -->
+                <div style="margin: 20px 0;">
+                    <button class="category-btn active" data-category="all">सभी</button>
+                    <button class="category-btn" data-category="social">सोशल मीडिया</button>
+                    <button class="category-btn" data-category="entertainment">एंटरटेनमेंट</button>
+                    <button class="category-btn" data-category="tools">टूल्स</button>
+                    <button class="category-btn" data-category="games">गेम्स</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="apps-list" id="allApps">
+            <!-- ऐप्स यहाँ डायनामिक भरे जाएंगे -->
+        </div>
+        
+        <!-- पेजिनेशन -->
+        <div class="pagination" id="pagination" style="display: none;">
+            <button id="prevBtn" class="btn-secondary" disabled>
+                <i class="fas fa-chevron-left"></i> पिछला
+            </button>
+            <span id="pageInfo" style="margin: 0 15px;">पेज 1 का 1</span>
+            <button id="nextBtn" class="btn-secondary" disabled>
+                अगला <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- कॉल टू एक्शन -->
+    <section style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; padding: 60px 20px; text-align: center; margin-top: 50px;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 20px;">अभी डाउनलोड करना शुरू करें!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
+                100% सुरक्षित और वेरिफाइड MOD APK ऐप्स। कोई विज्ञापन नहीं, कोई सर्वे नहीं।
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#featured" class="btn-primary" style="background: white; color: #2563eb;">
+                    <i class="fas fa-rocket"></i> पॉपुलर ऐप्स देखें
+                </a>
+                <a href="search.html" class="btn-primary" style="background: transparent; border: 2px solid white;">
+                    <i class="fas fa-search"></i> अपना ऐप ढूंढें
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- फुटर -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3><i class="fas fa-rocket"></i> OP ASHISH YT</h3>
+                <p>आपका भरोसेमंद MOD APK सोर्स</p>
+                <div style="margin-top: 15px;">
+                    <a href="#" style="color: #cbd5e1; margin-right: 15px;">
+                        <i class="fab fa-facebook fa-lg"></i>
+                    </a>
+                    <a href="#" style="color: #cbd5e1; margin-right: 15px;">
+                        <i class="fab fa-youtube fa-lg"></i>
+                    </a>
+                    <a href="#" style="color: #cbd5e1; margin-right: 15px;">
+                        <i class="fab fa-telegram fa-lg"></i>
+                    </a>
+                    <a href="#" style="color: #cbd5e1;">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>जल्दी लिंक</h4>
+                <a href="index.html"><i class="fas fa-home"></i> होम</a>
+                <a href="#featured"><i class="fas fa-star"></i> फीचर्ड</a>
+                <a href="#apps"><i class="fas fa-th-list"></i> सभी ऐप्स</a>
+                <a href="search.html"><i class="fas fa-search"></i> सर्च</a>
+                <a href="#" id="adminLink"><i class="fas fa-user-lock"></i> एडमिन</a>
+            </div>
+            <div class="footer-links">
+                <h4>कानूनी</h4>
+                <a href="#"><i class="fas fa-file-contract"></i> हमारे बारे में</a>
+                <a href="#"><i class="fas fa-address-book"></i> संपर्क करें</a>
+                <a href="#"><i class="fas fa-shield-alt"></i> प्राइवेसी पॉलिसी</a>
+                <a href="#"><i class="fas fa-balance-scale"></i> नियम और शर्तें</a>
+                <a href="#"><i class="fas fa-exclamation-circle"></i> DMCA</a>
+            </div>
+            <div class="footer-links">
+                <h4>सपोर्ट</h4>
+                <a href="#"><i class="fas fa-question-circle"></i> FAQ</a>
+                <a href="#"><i class="fas fa-book"></i ट्यूटोरियल</a>
+                <a href="#"><i class="fas fa-bug"></i> बग रिपोर्ट</a>
+                <a href="#"><i class="fas fa-lightbulb"></i> सुझाव</a>
+                <a href="#"><i class="fas fa-download"></i> डाउनलोड गाइड</a>
+            </div>
+        </div>
+        <p class="copyright">
+            © 2024 OP ASHISH YT. All rights reserved. | 
+            <i class="fas fa-heart" style="color: #e74c3c;"></i> Made with Love |
+            <span id="currentYear"></span>
+        </p>
+    </footer>
+
+    <!-- टॉप स्क्रॉल बटन -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- नोटिफिकेशन -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText"></span>
+    </div>
+
+    <!-- जावास्क्रिप्ट -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/apps-data.js"></script>
+    <script>
+        // एप्लिकेशन डेटा
+        let allAppsData = [];
+        let filteredApps = [];
+        let currentPage = 1;
+        const appsPerPage = 10;
+        
+        // DOM तैयार होने पर
+        document.addEventListener('DOMContentLoaded', function() {
+            // वर्ष अपडेट करें
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // यूजर सेक्शन अपडेट करें
+            updateUserSection();
+            
+            // ऐप्स लोड करें
+            loadApps();
+            
+            // डार्क मोड चेक करें
+            checkDarkMode();
+            
+            // ईवेंट लिस्नेर सेट करें
+            setupEventListeners();
+            
+            // वेलकम नोटिफिकेशन
+            setTimeout(() => {
+                showNotification('वेलकम! 100+ फ्री MOD APK ऐप्स डाउनलोड करें');
+            }, 1000);
+        });
+        
+        // ऐप्स डेटा लोड करें
+        async function loadApps() {
+            try {
+                // लोडिंग दिखाएं
+                showLoading(true);
+                
+                // डेटा सोर्स - पहले localStorage, फिर डिफ़ॉल्ट
+                let appsData = [];
+                
+                // localStorage से कस्टम ऐप्स लोड करें
+                const customApps = localStorage.getItem('user_apps');
+                if (customApps) {
+                    appsData = JSON.parse(customApps);
+                }
+                
+                // डिफ़ॉल्ट ऐप्स जोड़ें (यदि कोई कस्टम ऐप नहीं हैं)
+                if (appsData.length === 0) {
+                    appsData = window.appsData || [];
+                }
+                
+                // डाउनलोड काउंट अपडेट करें
+                appsData = updateDownloadCounts(appsData);
+                
+                // कैटेगरी जोड़ें
+                appsData = addCategories(appsData);
+                
+                allAppsData = appsData;
+                filteredApps = [...allAppsData];
+                
+                // स्टैटिस्टिक्स अपडेट करें
+                updateStatistics(appsData);
+                
+                // फीचर्ड ऐप्स दिखाएं
+                displayFeaturedApps(appsData);
+                
+                // सभी ऐप्स दिखाएं
+                displayAllApps();
+                
+                // कैटेगरी बटन सेट करें
+                setupCategoryButtons();
+                
+            } catch (error) {
+                console.error('Error loading apps:', error);
+                showNotification('ऐप्स लोड करने में त्रुटि', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        // डाउनलोड काउंट अपडेट करें
+        function updateDownloadCounts(apps) {
+            return apps.map(app => {
+                const savedCount = localStorage.getItem(`downloads_${app.id}`);
+                if (savedCount) {
+                    app.downloads = parseInt(savedCount) || app.downloads;
+                }
+                return app;
+            });
+        }
+        
+        // कैटेगरी जोड़ें
+        function addCategories(apps) {
+            const categories = {
+                'whatsapp': 'social',
+                'instagram': 'social',
+                'facebook': 'social',
+                'youtube': 'entertainment',
+                'spotify': 'entertainment',
+                'tiktok': 'entertainment',
+                'snapchat': 'social',
+                'game': 'games',
+                'player': 'tools',
+                'editor': 'tools'
+            };
+            
+            return apps.map(app => {
+                app.category = 'all';
+                const appName = app.name.toLowerCase();
+                
+                for (const [keyword, category] of Object.entries(categories)) {
+                    if (appName.includes(keyword)) {
+                        app.category = category;
+                        break;
+                    }
+                }
+                
+                return app;
+            });
+        }
+        
+        // स्टैटिस्टिक्स अपडेट करें
+        function updateStatistics(apps) {
+            const totalDownloads = apps.reduce((sum, app) => sum + app.downloads, 0);
+            const totalApps = apps.length;
+            
+            document.getElementById('totalDownloads').textContent = 
+                totalDownloads >= 1000 ? (totalDownloads / 1000).toFixed(1) + 'K' : totalDownloads;
+            document.getElementById('totalApps').textContent = totalApps;
+            
+            // एक्टिव यूजर्स (सिमुलेशन)
+            const activeUsers = Math.floor(Math.random() * 1000) + 500;
+            document.getElementById('activeUsers').textContent = 
+                activeUsers >= 1000 ? (activeUsers / 1000).toFixed(1) + 'K+' : activeUsers;
+        }
+        
+        // फीचर्ड ऐप्स दिखाएं
+        function displayFeaturedApps(apps) {
+            const container = document.getElementById('featuredApps');
+            
+            // डाउनलोड के अनुसार सॉर्ट करें
+            const featured = [...apps]
+                .sort((a, b) => b.downloads - a.downloads)
+                .slice(0, 6);
+            
+            if (featured.length === 0) {
+                container.innerHTML = `
+                    <div class="no-apps">
+                        <i class="fas fa-box-open"></i>
+                        <h3>कोई ऐप उपलब्ध नहीं</h3>
+                        <p>वेबसाइट सेटअप पूरा है। एडमिन लॉगिन करके पहला ऐप जोड़ें।</p>
+                        <a href="admin/login.html" class="btn-download" style="margin-top: 15px;">
+                            <i class="fas fa-user-lock"></i> एडमिन लॉगिन
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = featured.map(app => `
+                <div class="app-card" data-category="${app.category}" data-id="${app.id}">
+                    <div style="position: relative;">
+                        <img src="${app.logo}" alt="${app.name}" 
+                             onerror="this.src='assets/img/default-logo.png'">
+                        ${app.downloads >= 1000 ? `
+                            <div style="position: absolute; top: -10px; right: -10px; background: #ef4444; color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">
+                                <i class="fas fa-fire"></i> HOT
+                            </div>
+                        ` : ''}
+                    </div>
+                    <h3>${app.name}</h3>
+                    <p>${app.description.substring(0, 100)}...</p>
+                    <div class="app-info">
+                        <span><i class="fas fa-code-branch"></i> ${app.version}</span>
+                        <span><i class="fas fa-hdd"></i> ${app.size}</span>
+                        <span><i class="fas fa-download"></i> ${formatNumber(app.downloads)}</span>
+                    </div>
+                    <a href="download.html?id=${app.id}" class="btn-download" onclick="trackDownload(${app.id})">
+                        <i class="fas fa-download"></i> डाउनलोड APK
+                    </a>
+                </div>
+            `).join('');
+        }
+        
+        // सभी ऐप्स दिखाएं
+        function displayAllApps() {
+            const container = document.getElementById('allApps');
+            const startIndex = (currentPage - 1) * appsPerPage;
+            const endIndex = startIndex + appsPerPage;
+            const currentApps = filteredApps.slice(startIndex, endIndex);
+            
+            if (currentApps.length === 0) {
+                container.innerHTML = `
+                    <div class="no-apps">
+                        <i class="fas fa-search"></i>
+                        <h3>कोई ऐप नहीं मिला</h3>
+                        <p>इस कैटेगरी में कोई ऐप नहीं है। सभी ऐप्स देखने के लिए "सभी" कैटेगरी चुनें।</p>
+                    </div>
+                `;
+                document.getElementById('pagination').style.display = 'none';
+                return;
+            }
+            
+            container.innerHTML = currentApps.map(app => `
+                <div class="app-item" data-category="${app.category}" data-id="${app.id}">
+                    <img src="${app.logo}" alt="${app.name}" 
+                         onerror="this.src='assets/img/default-logo.png'">
+                    <div class="app-details">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <h3>${app.name}</h3>
+                            <span style="background: #dbeafe; color: #1e40af; padding: 3px 10px; border-radius: 15px; font-size: 0.8rem;">
+                                ${app.category === 'social' ? 'सोशल' : 
+                                  app.category === 'entertainment' ? 'एंटरटेनमेंट' :
+                                  app.category === 'tools' ? 'टूल्स' :
+                                  app.category === 'games' ? 'गेम्स' : 'अन्य'}
+                            </span>
+                        </div>
+                        <p>${app.description}</p>
+                        <div class="meta">
+                            <span><i class="fas fa-code-branch"></i> ${app.version}</span>
+                            <span><i class="fas fa-hdd"></i> ${app.size}</span>
+                            <span><i class="fas fa-download"></i> ${formatNumber(app.downloads)} डाउनलोड्स</span>
+                            <span><i class="fas fa-clock"></i> अभी</span>
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 15px;">
+                            <a href="download.html?id=${app.id}" class="btn-download" onclick="trackDownload(${app.id})" style="flex: 1;">
+                                <i class="fas fa-download"></i> डाउनलोड करें
+                            </a>
+                            <button class="btn-download" style="background: #6b7280; width: auto;" onclick="showAppDetails(${app.id})">
+                                <i class="fas fa-info-circle"></i> डिटेल्स
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // पेजिनेशन अपडेट करें
+            updatePagination();
+        }
+        
+        // कैटेगरी बटन सेटअप
+        function setupCategoryButtons() {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // एक्टिव क्लास अपडेट करें
+                    buttons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // ऐप्स फिल्टर करें
+                    const category = this.dataset.category;
+                    filterAppsByCategory(category);
+                });
+            });
+        }
+        
+        // कैटेगरी के अनुसार ऐप्स फिल्टर करें
+        function filterAppsByCategory(category) {
+            if (category === 'all') {
+                filteredApps = [...allAppsData];
+            } else {
+                filteredApps = allAppsData.filter(app => app.category === category);
+            }
+            
+            currentPage = 1;
+            displayAllApps();
+        }
+        
+        // पेजिनेशन अपडेट करें
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredApps.length / appsPerPage);
+            const pageInfo = document.getElementById('pageInfo');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const pagination = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                pagination.style.display = 'none';
+                return;
+            }
+            
+            pagination.style.display = 'flex';
+            pageInfo.textContent = `पेज ${currentPage} का ${totalPages}`;
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+            
+            // पेजिनेशन बटन इवेंट
+            prevBtn.onclick = () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayAllApps();
+                    window.scrollTo({ top: document.getElementById('apps').offsetTop - 80, behavior: 'smooth' });
+                }
+            };
+            
+            nextBtn.onclick = () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayAllApps();
+                    window.scrollTo({ top: document.getElementById('apps').offsetTop - 80, behavior: 'smooth' });
+                }
+            };
+        }
+        
+        // यूजर सेक्शन अपडेट करें
+        function updateUserSection() {
+            const userSection = document.getElementById('userSection');
+            const adminLink = document.getElementById('adminLink');
+            const isLoggedIn = localStorage.getItem('admin_logged_in') === 'true';
+            const username = localStorage.getItem('admin_username') || 'Admin';
+            
+            if (isLoggedIn) {
+                userSection.innerHTML = `
+                    <div class="user-info">
+                        <div class="user-avatar">${username.charAt(0).toUpperCase()}</div>
+                        <span>${username}</span>
+                        <a href="admin/dashboard.html" style="color: white; margin-left: 10px;">
+                            <i class="fas fa-cog"></i> डैशबोर्ड
+                        </a>
+                        <a href="admin/logout.html" style="color: white; margin-left: 10px;">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </div>
+                `;
+                adminLink.href = "admin/dashboard.html";
+                adminLink.innerHTML = '<i class="fas fa-cog"></i> डैशबोर्ड';
+            } else {
+                userSection.innerHTML = '';
+                adminLink.href = "admin/login.html";
+                adminLink.innerHTML = '<i class="fas fa-user-lock"></i> एडमिन';
+            }
+        }
+        
+        // डार्क मोड चेक करें
+        function checkDarkMode() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            const toggleBtn = document.getElementById('darkModeToggle');
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                document.body.classList.remove('dark-mode');
+                toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+        
+        // ईवेंट लिस्नेर सेटअप
+        function setupEventListeners() {
+            // डार्क मोड टॉगल
+            document.getElementById('darkModeToggle').addEventListener('click', function() {
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                
+                if (isDarkMode) {
+                    document.body.classList.remove('dark-mode');
+                    this.innerHTML = '<i class="fas fa-moon"></i>';
+                    localStorage.setItem('darkMode', 'false');
+                    showNotification('लाइट मोड एक्टिवेटेड');
+                } else {
+                    document.body.classList.add('dark-mode');
+                    this.innerHTML = '<i class="fas fa-sun"></i>';
+                    localStorage.setItem('darkMode', 'true');
+                    showNotification('डार्क मोड एक्टिवेटेड');
+                }
+            });
+            
+            // स्क्रॉल टू टॉप
+            document.getElementById('scrollToTop').addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // स्क्रॉल इवेंट
+            window.addEventListener('scroll', function() {
+                const scrollBtn = document.getElementById('scrollToTop');
+                if (window.scrollY > 300) {
+                    scrollBtn.style.display = 'flex';
+                } else {
+                    scrollBtn.style.display = 'none';
+                }
+            });
+            
+            // डाउनलोड ट्रैकिंग
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.btn-download')) {
+                    const link = e.target.closest('.btn-download');
+                    if (link.href.includes('download.html')) {
+                        const appId = new URL(link.href).searchParams.get('id');
+                        if (appId) {
+                            trackDownload(appId);
+                        }
+                    }
+                }
+            });
+        }
+        
+        // डाउनलोड ट्रैक करें
+        function trackDownload(appId) {
+            // डाउनलोड काउंट बढ़ाएं
+            const app = allAppsData.find(a => a.id == appId);
+            if (app) {
+                app.downloads++;
+                localStorage.setItem(`downloads_${appId}`, app.downloads);
+                
+                // अपडेटेड ऐप्स localStorage में सेव करें
+                localStorage.setItem('user_apps', JSON.stringify(allAppsData));
+                
+                // स्टैटिस्टिक्स अपडेट करें
+                updateStatistics(allAppsData);
+                
+                // नोटिफिकेशन दिखाएं
+                setTimeout(() => {
+                    showNotification(`${app.name} डाउनलोड शुरू हो रहा है!`);
+                }, 100);
+            }
+        }
+        
+        // ऐप डिटेल्स दिखाएं
+        function showAppDetails(appId) {
+            const app = allAppsData.find(a => a.id == appId);
+            if (app) {
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.5);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 2000;
+                `;
+                
+                modal.innerHTML = `
+                    <div style="background: white; padding: 30px; border-radius: 15px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="margin: 0;">${app.name}</h3>
+                            <button onclick="this.closest('[style]').remove()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">×</button>
+                        </div>
+                        
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <img src="${app.logo}" alt="${app.name}" 
+                                 style="width: 100px; height: 100px; border-radius: 20px; object-fit: cover;"
+                                 onerror="this.src='assets/img/default-logo.png'">
+                        </div>
+                        
+                        <p><strong>विवरण:</strong> ${app.description}</p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                            <div style="background: #f8fafc; padding: 15px; border-radius: 8px;">
+                                <strong><i class="fas fa-code-branch"></i> वर्जन:</strong><br>
+                                ${app.version}
+                            </div>
+                            <div style="background: #f8fafc; padding: 15px; border-radius: 8px;">
+                                <strong><i class="fas fa-hdd"></i> साइज:</strong><br>
+                                ${app.size}
+                            </div>
+                            <div style="background: #f8fafc; padding: 15px; border-radius: 8px;">
+                                <strong><i class="fas fa-download"></i> डाउनलोड्स:</strong><br>
+                                ${formatNumber(app.downloads)}
+                            </div>
+                            <div style="background: #f8fafc; padding: 15px; border-radius: 8px;">
+                                <strong><i class="fas fa-tag"></i> कैटेगरी:</strong><br>
+                                ${app.category}
+                            </div>
+                        </div>
+                        
+                        ${app.features && app.features.length > 0 ? `
+                            <div style="margin: 20px 0;">
+                                <strong><i class="fas fa-star"></i> MOD फीचर्स:</strong>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    ${app.features.map(f => `<li>${f}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                        
+                        <div style="margin-top: 30px; display: flex; gap: 10px;">
+                            <a href="download.html?id=${app.id}" class="btn-download" style="flex: 1; text-align: center;" onclick="trackDownload(${app.id})">
+                                <i class="fas fa-download"></i> डाउनलोड करें
+                            </a>
+                            <button onclick="this.closest('[style]').remove()" style="padding: 12px 20px; background: #6b7280; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                                बंद करें
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // मोडल के बाहर क्लिक करने पर बंद करें
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.remove();
+                    }
+                });
+            }
+        }
+        
+        // लोडिंग दिखाएं/छिपाएं
+        function showLoading(show) {
+            document.getElementById('loadingSpinner').style.display = show ? 'block' : 'none';
+        }
+        
+        // नोटिफिकेशन दिखाएं
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const text = document.getElementById('notificationText');
+            
+            notification.style.background = type === 'error' ? '#ef4444' : '#10b981';
+            text.textContent = message;
+            notification.style.display = 'flex';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+        
+        // नंबर फॉर्मेट करें
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            } else if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num;
+        }
+        
+        // ग्लोबल फंक्शन्स
+        window.trackDownload = trackDownload;
+        window.showAppDetails = showAppDetails;
+        
+        // पेज लोड होने पर ऐप्स लोड करें
+        loadApps();
+    </script>
+</body>
+</html>

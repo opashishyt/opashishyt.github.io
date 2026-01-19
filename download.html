@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download APK - OP ASHISH YT</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .download-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        
+        .download-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .app-icon-large {
+            width: 150px;
+            height: 150px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 5px solid #f0f0f0;
+        }
+        
+        .download-info {
+            margin: 30px 0;
+            text-align: left;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .feature-tag {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .safety-note {
+            background: #fef3c7;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .safety-note h4 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- हेडर -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/img/logo.png" alt="OP ASHISH YT Logo" onerror="this.src='assets/img/default-logo.png'">
+                <span>OP ASHISH YT</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> होम</a>
+                <a href="search.html"><i class="fas fa-search"></i> सर्च</a>
+                <a href="admin/login.html"><i class="fas fa-user-lock"></i> एडमिन</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="download-container">
+        <div class="download-card">
+            <div id="appContent">
+                <!-- ऐप कंटेंट यहाँ डायनामिक भरा जाएगा -->
+                <p>Loading app information...</p>
+            </div>
+            
+            <div class="safety-note">
+                <h4><i class="fas fa-shield-alt"></i> सुरक्षा नोट:</h4>
+                <p>1. यह MOD APK वर्जन ऑफिशियल ऐप का संशोधित रूप है</p>
+                <p>2. डाउनलोड से पहले "Unknown Sources" ऑप्शन ऑन करें</p>
+                <p>3. वायरस स्कैन के लिए Virustotal.com का उपयोग करें</p>
+                <p>4. ऐप इंस्टॉल करने से पहले बैकअप ले लें</p>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <a href="index.html" class="btn-download" style="background: #6b7280;">
+                    <i class="fas fa-home"></i> वापस होम पेज पर जाएं
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // URL से ऐप ID पढ़ें
+        const params = getUrlParams();
+        const appId = params.id;
+        
+        // ऐप डेटा लोड करें
+        function loadAppData() {
+            if(!appId) {
+                document.getElementById('appContent').innerHTML = `
+                    <div class="error">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #dc2626;"></i>
+                        <h2>ऐप ID नहीं मिला</h2>
+                        <p>कृपया वैध ऐप ID के साथ पेज खोलें</p>
+                        <a href="index.html" class="btn-download">होम पेज पर जाएं</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            const app = getAppById(appId);
+            
+            if(!app) {
+                document.getElementById('appContent').innerHTML = `
+                    <div class="error">
+                        <i class="fas fa-search" style="font-size: 3rem; color: #6b7280;"></i>
+                        <h2>ऐप नहीं मिला</h2>
+                        <p>यह ऐप हमारे डेटाबेस में नहीं है</p>
+                        <a href="search.html" class="btn-download">दूसरे ऐप्स सर्च करें</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            // ऐप डिटेल्स दिखाएं
+            document.getElementById('appContent').innerHTML = `
+                <img src="${app.logo}" alt="${app.name}" class="app-icon-large">
+                <h1>${app.name}</h1>
+                <p style="color: #666; margin: 10px 0 20px;">${app.description}</p>
+                
+                <div class="download-info">
+                    <div class="info-row">
+                        <span><strong><i class="fas fa-code-branch"></i> वर्जन:</strong></span>
+                        <span>${app.version}</span>
+                    </div>
+                    <div class="info-row">
+                        <span><strong><i class="fas fa-hdd"></i> साइज:</strong></span>
+                        <span>${app.size}</span>
+                    </div>
+                    <div class="info-row">
+                        <span><strong><i class="fas fa-download"></i> डाउनलोड्स:</strong></span>
+                        <span>${app.downloads}</span>
+                    </div>
+                </div>
+                
+                ${app.features ? `
+                    <h3><i class="fas fa-star"></i> MOD फीचर्स:</h3>
+                    <div class="features-list">
+                        ${app.features.map(feature => `
+                            <div class="feature-tag">${feature}</div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+                
+                <button id="downloadBtn" class="btn-download" style="margin-top: 30px; font-size: 1.2rem; padding: 15px 40px;">
+                    <i class="fas fa-download"></i> APK डाउनलोड करें (${app.size})
+                </button>
+                
+                <div style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+                    <p><i class="fas fa-info-circle"></i> डाउनलोड शुरू होने में 5-10 सेकंड लग सकते हैं</p>
+                </div>
+            `;
+            
+            // डाउनलोड बटन इवेंट
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+                // डाउनलोड काउंट बढ़ाएं
+                let downloads = localStorage.getItem(`downloads_${appId}`) || app.downloads;
+                downloads = parseInt(downloads) + 1;
+                localStorage.setItem(`downloads_${appId}`, downloads);
+                
+                // डाउनलोड सिमुलेशन
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> डाउनलोड हो रहा है...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    alert(`धन्यवाद! ${app.name} डाउनलोड शुरू हो गया है।\n\nफाइल: ${app.name.replace(/\s+/g, '_')}.apk\nसाइज: ${app.size}`);
+                    
+                    // बटन रिसेट करें
+                    this.innerHTML = `<i class="fas fa-check"></i> डाउनलोड पूरा हुआ!`;
+                    
+                    // 3 सेकंड बाद रीडायरेक्ट
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 3000);
+                }, 2000);
+            });
+        }
+        
+        // पेज लोड होने पर ऐप डेटा लोड करें
+        document.addEventListener('DOMContentLoaded', loadAppData);
+    </script>
+</body>
+</html>
