@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OP ASHISH YT - MOD APK Downloads</title>
+    <meta name="description" content="Download MOD APK Games and Apps for free">
+    <meta name="keywords" content="mod apk, android games, free apk, premium apps">
+    
+    <!-- CSS लिंक -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Additional styles from your code */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 150px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-box i {
+            font-size: 2rem;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        
+        .stat-box h3 {
+            font-size: 1.8rem;
+            color: #2563eb;
+            margin: 5px 0;
+        }
+        
+        /* ... (rest of your index.html styles) */
+    </style>
+</head>
+<body>
+    <!-- हेडर -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/img/logo.png" alt="OP ASHISH YT Logo" onerror="this.src='assets/img/default-logo.png'">
+                <span>OP ASHISH YT</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html"><i class="fas fa-home"></i> होम</a>
+                <a href="#featured"><i class="fas fa-star"></i> फीचर्ड</a>
+                <a href="#apps"><i class="fas fa-th-list"></i> सभी ऐप्स</a>
+                <a href="search.html"><i class="fas fa-search"></i> सर्च</a>
+                <a href="admin/login.html"><i class="fas fa-user-lock"></i> एडमिन</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- हीरो सेक्शन -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>MOD APK ऐप्स और गेम्स डाउनलोड करें</h1>
+            <p>अनलॉक्ड फीचर्स • प्रीमियम कंटेंट • फ्री डाउनलोड</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#featured" class="btn-primary">ऐप्स एक्सप्लोर करें</a>
+                <a href="search.html" class="btn-primary" style="background: transparent; border: 2px solid white;">
+                    <i class="fas fa-search"></i> सर्च ऐप्स
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- स्टैटिस्टिक्स -->
+    <div class="stats">
+        <div class="stat-box">
+            <i class="fas fa-download"></i>
+            <h3 id="totalDownloads">0</h3>
+            <p>कुल डाउनलोड</p>
+        </div>
+        <div class="stat-box">
+            <i class="fas fa-mobile-alt"></i>
+            <h3 id="totalApps">0</h3>
+            <p>कुल ऐप्स</p>
+        </div>
+        <div class="stat-box">
+            <i class="fas fa-users"></i>
+            <h3 id="activeUsers">24/7</h3>
+            <p>सक्रिय यूजर्स</p>
+        </div>
+        <div class="stat-box">
+            <i class="fas fa-star"></i>
+            <h3 id="topRated">100%</h3>
+            <p>रिव्यू रेटिंग</p>
+        </div>
+    </div>
+
+    <!-- फीचर्ड ऐप्स -->
+    <section id="featured" class="featured-apps">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2><i class="fas fa-star"></i> फीचर्ड ऐप्स</h2>
+            <p style="color: #666; max-width: 600px; margin: 0 auto;">सबसे ज्यादा डाउनलोड किए गए टॉप ऐप्स</p>
+        </div>
+        
+        <div class="apps-grid" id="featuredApps">
+            <!-- ऐप्स यहाँ डायनामिक भरे जाएंगे -->
+            <div class="loading-apps">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>ऐप्स लोड हो रहे हैं...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- सभी ऐप्स -->
+    <section id="apps" class="all-apps">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2><i class="fas fa-th-list"></i> सभी ऐप्स और गेम्स</h2>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <p style="color: #666;">नए ऐप्स को ऊपर देखें। सर्च बार का उपयोग करके स्पेशल ऐप्स ढूंढें।</p>
+                
+                <!-- कैटेगरी फिल्टर -->
+                <div style="margin: 20px 0;">
+                    <button class="category-btn active" data-category="all">सभी</button>
+                    <button class="category-btn" data-category="social">सोशल मीडिया</button>
+                    <button class="category-btn" data-category="entertainment">एंटरटेनमेंट</button>
+                    <button class="category-btn" data-category="tools">टूल्स</button>
+                    <button class="category-btn" data-category="games">गेम्स</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="apps-list" id="allApps">
+            <!-- ऐप्स यहाँ डायनामिक भरे जाएंगे -->
+        </div>
+    </section>
+
+    <!-- फुटर -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3><i class="fas fa-rocket"></i> OP ASHISH YT</h3>
+                <p>आपका भरोसेमंद MOD APK सोर्स</p>
+            </div>
+            <div class="footer-links">
+                <h4>जल्दी लिंक</h4>
+                <a href="index.html"><i class="fas fa-home"></i> होम</a>
+                <a href="#featured"><i class="fas fa-star"></i> फीचर्ड</a>
+                <a href="#apps"><i class="fas fa-th-list"></i> सभी ऐप्स</a>
+                <a href="search.html"><i class="fas fa-search"></i> सर्च</a>
+                <a href="admin/login.html"><i class="fas fa-user-lock"></i> एडमिन</a>
+            </div>
+            <div class="footer-links">
+                <h4>कानूनी</h4>
+                <a href="#"><i class="fas fa-file-contract"></i> हमारे बारे में</a>
+                <a href="#"><i class="fas fa-address-book"></i> संपर्क करें</a>
+                <a href="#"><i class="fas fa-shield-alt"></i> प्राइवेसी पॉलिसी</a>
+                <a href="#"><i class="fas fa-balance-scale"></i> नियम और शर्तें</a>
+            </div>
+            <div class="footer-links">
+                <h4>सपोर्ट</h4>
+                <a href="#"><i class="fas fa-question-circle"></i> FAQ</a>
+                <a href="#"><i class="fas fa-book"></i> ट्यूटोरियल</a>
+                <a href="#"><i class="fas fa-bug"></i> बग रिपोर्ट</a>
+                <a href="#"><i class="fas fa-lightbulb"></i> सुझाव</a>
+            </div>
+        </div>
+        <p class="copyright">
+            © 2024 OP ASHISH YT. All rights reserved. | 
+            <i class="fas fa-heart" style="color: #e74c3c;"></i> Made with Love
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/apps-data.js"></script>
+    <script>
+        // Apps data loading and display logic
+        document.addEventListener('DOMContentLoaded', function() {
+            loadApps();
+        });
+
+        function loadApps() {
+            // Check if apps data exists
+            if (typeof window.appsData !== 'undefined') {
+                displayFeaturedApps();
+                displayAllApps();
+                updateStats();
+                setupCategoryFilters();
+            } else {
+                // Load default apps
+                setTimeout(loadApps, 500);
+            }
+        }
+
+        function displayFeaturedApps() {
+            const container = document.getElementById('featuredApps');
+            if (!container) return;
+
+            // Get featured apps (first 6 apps)
+            const featured = window.appsData.slice(0, 6);
+            
+            container.innerHTML = featured.map(app => `
+                <div class="app-card" data-category="${app.category || 'all'}" data-id="${app.id}">
+                    <img src="${app.logo}" alt="${app.name}" onerror="this.src='assets/img/default-logo.png'">
+                    <h3>${app.name}</h3>
+                    <p>${app.description.substring(0, 100)}...</p>
+                    <div class="app-info">
+                        <span><i class="fas fa-code-branch"></i> ${app.version}</span>
+                        <span><i class="fas fa-hdd"></i> ${app.size}</span>
+                        <span><i class="fas fa-download"></i> ${formatNumber(app.downloads)}</span>
+                    </div>
+                    <a href="download.html?id=${app.id}" class="btn-download" onclick="trackDownload(${app.id})">
+                        <i class="fas fa-download"></i> डाउनलोड APK
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        function displayAllApps() {
+            const container = document.getElementById('allApps');
+            if (!container) return;
+
+            container.innerHTML = window.appsData.map(app => `
+                <div class="app-item" data-category="${app.category || 'all'}" data-id="${app.id}">
+                    <img src="${app.logo}" alt="${app.name}" onerror="this.src='assets/img/default-logo.png'">
+                    <div class="app-details">
+                        <h3>${app.name}</h3>
+                        <p>${app.description}</p>
+                        <div class="meta">
+                            <span><i class="fas fa-code-branch"></i> ${app.version}</span>
+                            <span><i class="fas fa-hdd"></i> ${app.size}</span>
+                            <span><i class="fas fa-download"></i> ${formatNumber(app.downloads)} डाउनलोड्स</span>
+                        </div>
+                        <a href="download.html?id=${app.id}" class="btn-download" onclick="trackDownload(${app.id})">
+                            <i class="fas fa-download"></i> डाउनलोड करें
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateStats() {
+            const totalDownloads = window.appsData.reduce((sum, app) => sum + app.downloads, 0);
+            const totalApps = window.appsData.length;
+            
+            document.getElementById('totalDownloads').textContent = formatNumber(totalDownloads);
+            document.getElementById('totalApps').textContent = totalApps;
+        }
+
+        function setupCategoryFilters() {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active button
+                    buttons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter apps
+                    const category = this.dataset.category;
+                    filterAppsByCategory(category);
+                });
+            });
+        }
+
+        function filterAppsByCategory(category) {
+            const allApps = document.querySelectorAll('.app-item, .app-card');
+            
+            allApps.forEach(app => {
+                if (category === 'all' || app.dataset.category === category) {
+                    app.style.display = 'flex';
+                } else {
+                    app.style.display = 'none';
+                }
+            });
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            } else if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num;
+        }
+
+        function trackDownload(appId) {
+            // Update download count in localStorage
+            const key = `downloads_${appId}`;
+            let current = localStorage.getItem(key) || 0;
+            current = parseInt(current) + 1;
+            localStorage.setItem(key, current);
+            
+            // Update UI if app card is visible
+            const downloadElements = document.querySelectorAll(`[data-id="${appId}"] .fa-download`);
+            downloadElements.forEach(el => {
+                const parent = el.closest('span');
+                if (parent) {
+                    const text = parent.textContent.replace(/\d+/, formatNumber(current));
+                    parent.textContent = text;
+                }
+            });
+        }
+
+        // Make functions available globally
+        window.trackDownload = trackDownload;
+    </script>
+</body>
+</html>

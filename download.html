@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download APK - OP ASHISH YT</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .download-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        .download-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .app-icon-large {
+            width: 150px;
+            height: 150px;
+            border-radius: 30px;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            display: block;
+            border: 5px solid #f0f0f0;
+        }
+        
+        .download-info {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .feature-tag {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .safety-note {
+            background: #fef3c7;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .safety-note h4 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- हेडर -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/img/logo.png" alt="OP ASHISH YT Logo" onerror="this.src='assets/img/default-logo.png'">
+                <span>OP ASHISH YT</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> होम</a>
+                <a href="search.html"><i class="fas fa-search"></i> सर्च</a>
+                <a href="admin/login.html"><i class="fas fa-user-lock"></i> एडमिन</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="download-container">
+        <div class="download-card">
+            <div id="appContent">
+                <!-- App content will be loaded here -->
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>ऐप की जानकारी लोड हो रही है...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/apps-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = getUrlParams();
+            const appId = params.id;
+            
+            if(!appId) {
+                showError('ऐप ID नहीं मिला');
+                return;
+            }
+            
+            // Find app in data
+            const app = window.appsData.find(a => a.id == appId);
+            
+            if(!app) {
+                showError('ऐप नहीं मिला');
+                return;
+            }
+            
+            displayAppDetails(app);
+        });
+        
+        function displayAppDetails(app) {
+            const container = document.getElementById('appContent');
+            
+            container.innerHTML = `
+                <div style="text-align: center;">
+                    <img src="${app.logo}" alt="${app.name}" class="app-icon-large" 
+                         onerror="this.src='assets/img/default-logo.png'">
+                    <h1>${app.name}</h1>
+                    <p style="color: #666; margin: 10px 0 20px; font-size: 1.1rem;">${app.description}</p>
+                </div>
+                
+                <div class="download-info">
+                    <div class="info-row">
+                        <span><strong><i class="fas fa-code-branch"></i> वर्जन:</strong></span>
+                        <span>${app.version}</span>
+                    </div>
+                    <div class="info-row">
+                        <span><strong><i class="fas fa-hdd"></i> साइज:</strong></span>
+                        <span>${app.size}</span>
+                    </div>
+                    <div class="info-row">
+                        <span><strong><i class="fas fa-download"></i> डाउनलोड्स:</strong></span>
+                        <span>${formatNumber(app.downloads)}</span>
+                    </div>
+                    ${app.developer ? `
+                    <div class="info-row">
+                        <span><strong><i class="fas fa-user-tie"></i> डेवलपर:</strong></span>
+                        <span>${app.developer}</span>
+                    </div>
+                    ` : ''}
+                    ${app.requirements ? `
+                    <div class="info-row">
+                        <span><strong><i class="fas fa-cog"></i> आवश्यकताएँ:</strong></span>
+                        <span>${app.requirements}</span>
+                    </div>
+                    ` : ''}
+                </div>
+                
+                ${app.features && app.features.length > 0 ? `
+                    <h3><i class="fas fa-star"></i> MOD फीचर्स:</h3>
+                    <div class="features-list">
+                        ${app.features.map(feature => `
+                            <div class="feature-tag">${feature}</div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+                
+                <div style="text-align: center; margin: 40px 0;">
+                    <button id="downloadBtn" class="btn-download" style="font-size: 1.2rem; padding: 15px 40px; max-width: 300px; margin: 0 auto;">
+                        <i class="fas fa-download"></i> APK डाउनलोड करें (${app.size})
+                    </button>
+                    
+                    <div style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+                        <p><i class="fas fa-info-circle"></i> डाउनलोड शुरू होने में कुछ सेकंड लग सकते हैं</p>
+                    </div>
+                </div>
+                
+                <div class="safety-note">
+                    <h4><i class="fas fa-shield-alt"></i> सुरक्षा नोट:</h4>
+                    <p>1. यह MOD APK वर्जन ऑफिशियल ऐप का संशोधित रूप है</p>
+                    <p>2. डाउनलोड से पहले "Unknown Sources" ऑप्शन ऑन करें</p>
+                    <p>3. ऐप इंस्टॉल करने से पहले बैकअप ले लें</p>
+                    <p>4. किसी भी प्रकार की समस्या होने पर हमसे संपर्क करें</p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="index.html" class="btn-download" style="background: #6b7280; width: auto;">
+                        <i class="fas fa-home"></i> वापस होम पेज पर जाएं
+                    </a>
+                </div>
+            `;
+            
+            // Add download button event
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+                startDownload(app);
+            });
+        }
+        
+        function startDownload(app) {
+            const btn = document.getElementById('downloadBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> डाउनलोड हो रहा है...';
+            
+            // Simulate download process
+            setTimeout(() => {
+                // Update download count
+                const key = `downloads_${app.id}`;
+                let current = localStorage.getItem(key) || app.downloads;
+                current = parseInt(current) + 1;
+                localStorage.setItem(key, current);
+                
+                // Show success message
+                btn.innerHTML = '<i class="fas fa-check"></i> डाउनलोड पूरा हुआ!';
+                btn.style.background = '#059669';
+                
+                // Create download link
+                const downloadLink = document.createElement('a');
+                downloadLink.href = app.apk_file || '#';
+                downloadLink.download = `${app.name.replace(/\s+/g, '_')}.apk`;
+                downloadLink.style.display = 'none';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+                
+                // Show alert
+                setTimeout(() => {
+                    alert(`धन्यवाद! ${app.name} डाउनलोड शुरू हो गया है।\n\nफाइल: ${app.name.replace(/\s+/g, '_')}.apk\nसाइज: ${app.size}`);
+                }, 500);
+                
+            }, 2000);
+        }
+        
+        function showError(message) {
+            const container = document.getElementById('appContent');
+            container.innerHTML = `
+                <div style="text-align: center; padding: 50px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #dc2626;"></i>
+                    <h2>${message}</h2>
+                    <a href="index.html" class="btn-download" style="width: auto; margin-top: 20px;">
+                        <i class="fas fa-home"></i> होम पेज पर जाएं
+                    </a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
