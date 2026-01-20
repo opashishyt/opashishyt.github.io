@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Download APK - OP ASHISH YT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .download-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        .download-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .app-icon-large {
+            width: 150px;
+            height: 150px;
+            border-radius: 30px;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 5px solid #f0f0f0;
+        }
+        
+        .download-info {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .safety-note {
+            background: #fef3c7;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/img/logo.png" alt="OP ASHISH YT Logo" onerror="this.src='assets/img/default-logo.png'">
+                <span>OP ASHISH YT</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> होम</a>
+                <a href="index.html#featured"><i class="fas fa-star"></i> फीचर्ड</a>
+                <a href="index.html#apps"><i class="fas fa-th-list"></i> सभी ऐप्स</a>
+                <a href="search.html"><i class="fas fa-search"></i> सर्च</a>
+                <a href="admin/login.html"><i class="fas fa-user-lock"></i> एडमिन</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="download-container">
+        <div class="download-card" id="downloadContent">
+            <div class="loading-apps">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>ऐप डिटेल्स लोड हो रही हैं...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <h4>OP ASHISH YT</h4>
+                <p>सभी MOD APK एक ही जगह पर। 100% सुरक्षित और फ्री डाउनलोड।</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>क्विक लिंक्स</h4>
+                <a href="index.html"><i class="fas fa-home"></i> होम</a>
+                <a href="search.html"><i class="fas fa-search"></i> सर्च</a>
+                <a href="admin/login.html"><i class="fas fa-user-lock"></i> एडमिन</a>
+            </div>
+            
+            <div class="footer-links">
+                <h4>कांटेक्ट</h4>
+                <a href="#"><i class="fas fa-envelope"></i> ईमेल</a>
+                <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="#"><i class="fab fa-telegram"></i> टेलीग्राम</a>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2024 OP ASHISH YT. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/apps-data.js"></script>
+    <script src="assets/js/script.js"></script>
+    
+    <!-- Firebase only if available -->
+    <script>
+        // Check if Firebase config exists
+        function loadFirebase() {
+            return new Promise((resolve) => {
+                const script = document.createElement('script');
+                script.src = "assets/js/firebase-config.js";
+                script.onload = () => resolve(true);
+                script.onerror = () => {
+                    console.log("Firebase config not found, using local data");
+                    resolve(false);
+                };
+                document.head.appendChild(script);
+            });
+        }
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Try to load Firebase
+            const firebaseAvailable = await loadFirebase();
+            
+            const params = getUrlParams();
+            const appId = params.id;
+            
+            if(!appId) {
+                showError('ऐप ID नहीं मिला');
+                return;
+            }
+            
+            let app = null;
+            
+            // Try to get app from different sources
+            if (firebaseAvailable && typeof FirebaseApp !== 'undefined') {
+                try {
+                    app = await FirebaseApp.getAppById(appId);
+                } catch (error) {
+                    console.log("Firebase error, trying local data");
+                }
+            }
+            
+            // If not found in Firebase, try local data
+            if (!app) {
+                // Try from default apps
+                app = window.appsData.find(a => a.id == appId);
+            }
+            
+            // If still not found, try localStorage
+            if (!app) {
+                const cachedApps = JSON.parse(localStorage.getItem('cached_apps') || '[]');
+                app = cachedApps.find(a => a.id == appId);
+            }
+            
+            if(!app) {
+                showError('ऐप नहीं मिला');
+                return;
+            }
+            
+            displayAppDetails(app);
+        });
+        
+        function displayAppDetails(app) {
+            const container = document.getElementById('downloadContent');
+            
+            const html = `
+                <img src="${app.logo || 'assets/img/default-logo.png'}" 
+                     alt="${app.name}" 
+                     class="app-icon-large"
+                     onerror="this.src='assets/img/default-logo.png'">
+                
+                <h1>${app.name}</h1>
+                <p>${app.description || 'No description available'}</p>
+                
+                <div class="download-info">
+                    <div class="info-row">
+                        <span><i class="fas fa-code-branch"></i> वर्जन:</span>
+                        <span>${app.version || '1.0'}</span>
+                    </div>
+                    
+                    <div class="info-row">
+                        <span><i class="fas fa-hdd"></i> साइज:</span>
+                        <span>${app.size || 'N/A'}</span>
+                    </div>
+                    
+                    <div class="info-row">
+                        <span><i class="fas fa-download"></i> डाउनलोड्स:</span>
+                        <span>${formatNumber(app.downloads || 0)}</span>
+                    </div>
+                    
+                    <div class="info-row">
+                        <span><i class="fas fa-category"></i> कैटेगरी:</span>
+                        <span>${app.category || 'General'}</span>
+                    </div>
+                </div>
+                
+                ${app.features ? `
+                <h3><i class="fas fa-star"></i> फीचर्स:</h3>
+                <div class="features-list">
+                    ${app.features.map(feature => `
+                        <div class="feature-tag">${feature}</div>
+                    `).join('')}
+                </div>
+                ` : ''}
+                
+                <div class="safety-note">
+                    <h4><i class="fas fa-shield-alt"></i> सुरक्षा नोट:</h4>
+                    <p>यह APK फ़ाइल 100% सुरक्षित है और मैलवेयर-फ्री है। डाउनलोड से पहले Unknown Sources को Enable करें।</p>
+                </div>
+                
+                <button class="btn-download" id="downloadBtn" onclick="startDownload(${JSON.stringify(app).replace(/"/g, '&quot;')})">
+                    <i class="fas fa-download"></i> APK डाउनलोड करें (${app.size || 'N/A'})
+                </button>
+                
+                <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+                    <i class="fas fa-info-circle"></i> डाउनलोड शुरू नहीं हो रहा? 
+                    <a href="${app.apk_file || '#'}" download style="color: #2563eb;">Direct Link</a>
+                </p>
+            `;
+            
+            container.innerHTML = html;
+        }
+        
+        function startDownload(app) {
+            const btn = document.getElementById('downloadBtn');
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> डाउनलोड हो रहा है...';
+            }
+            
+            // Create download link
+            const downloadLink = document.createElement('a');
+            downloadLink.href = app.apk_file || '#';
+            downloadLink.download = `${app.name.replace(/\s+/g, '_')}.apk`;
+            
+            // If no direct link, try to create blob URL
+            if (!app.apk_file || app.apk_file === '#') {
+                // Create a dummy file for demo
+                const blob = new Blob(['This is a demo APK file. In real implementation, this would be the actual APK.'], 
+                    { type: 'application/vnd.android.package-archive' });
+                downloadLink.href = URL.createObjectURL(blob);
+            }
+            
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            
+            // Show success message
+            if (btn) {
+                btn.innerHTML = '<i class="fas fa-check"></i> डाउनलोड पूरा हुआ!';
+                btn.style.background = '#059669';
+            }
+            
+            setTimeout(() => {
+                alert(`धन्यवाद! ${app.name} डाउनलोड शुरू हो गया है।\n\nफाइल: ${app.name.replace(/\s+/g, '_')}.apk\nसाइज: ${app.size || 'N/A'}`);
+            }, 500);
+        }
+        
+        function showError(message) {
+            const container = document.getElementById('downloadContent');
+            container.innerHTML = `
+                <div style="text-align: center; padding: 50px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #dc2626;"></i>
+                    <h2>${message}</h2>
+                    <p>कृपया होमपेज से वैलिड ऐप सिलेक्ट करें</p>
+                    <a href="index.html" class="btn-download" style="margin-top: 20px; display: inline-block;">
+                        <i class="fas fa-home"></i> होमपेज पर जाएं
+                    </a>
+                </div>
+            `;
+        }
+        
+        // Make functions available globally
+        window.startDownload = startDownload;
+        window.formatNumber = formatNumber;
+    </script>
+</body>
+</html>
