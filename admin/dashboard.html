@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Ashish Portfolio</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <div class="admin-logo">
+                <img src="../assets/admin-logo.png" alt="Admin Panel">
+                <h2>Admin Panel</h2>
+            </div>
+            
+            <nav class="admin-menu">
+                <ul>
+                    <li><a href="#dashboard" class="active">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a></li>
+                    <li><a href="#users">
+                        <i class="fas fa-users"></i>
+                        <span>Users</span>
+                        <span class="pending-badge" id="pendingUsersBadge">0</span>
+                    </a></li>
+                    <li><a href="#projects">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Projects</span>
+                    </a></li>
+                    <li><a href="#messages">
+                        <i class="fas fa-envelope"></i>
+                        <span>Messages</span>
+                    </a></li>
+                    <li><a href="#settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a></li>
+                    <li><a href="#website">
+                        <i class="fas fa-globe"></i>
+                        <span>Website</span>
+                    </a></li>
+                    <li><a href="../index.html" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>View Site</span>
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="admin-content">
+            <!-- Header -->
+            <div class="admin-header">
+                <h1>Admin Dashboard</h1>
+                <div class="admin-user">
+                    <div class="admin-user-avatar">
+                        <span>A</span>
+                    </div>
+                    <div class="admin-user-info">
+                        <h3>Admin</h3>
+                        <p>opashishyt</p>
+                    </div>
+                    <button class="admin-logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Dashboard Stats -->
+            <div id="dashboard" class="admin-section">
+                <div class="admin-main">
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Total Users</h3>
+                            <div class="admin-card-icon users">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="admin-card-value" id="totalUsers">0</div>
+                        <div class="admin-card-label">Registered Users</div>
+                        <div class="admin-card-change positive">
+                            <i class="fas fa-arrow-up"></i> 12% from last month
+                        </div>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Total Projects</h3>
+                            <div class="admin-card-icon projects">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                        </div>
+                        <div class="admin-card-value" id="totalProjects">0</div>
+                        <div class="admin-card-label">Portfolio Projects</div>
+                        <div class="admin-card-change positive">
+                            <i class="fas fa-arrow-up"></i> 5 new this month
+                        </div>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Messages</h3>
+                            <div class="admin-card-icon messages">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="admin-card-value" id="totalMessages">0</div>
+                        <div class="admin-card-label">Contact Messages</div>
+                        <div class="admin-card-change positive">
+                            <i class="fas fa-arrow-up"></i> 8 new today
+                        </div>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Visitors</h3>
+                            <div class="admin-card-icon visitors">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                        </div>
+                        <div class="admin-card-value" id="totalVisitors">0</div>
+                        <div class="admin-card-label">This Month</div>
+                        <div class="admin-card-change positive">
+                            <i class="fas fa-arrow-up"></i> 15% increase
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity -->
+                <div class="admin-table-container">
+                    <div class="admin-table-header">
+                        <h3>Pending User Approvals</h3>
+                        <div class="admin-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search users...">
+                        </div>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Registered</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pendingUsersTable">
+                            <!-- Pending users loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="admin-main">
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Latest Projects</h3>
+                            <a href="#projects" class="btn btn-primary btn-sm">View All</a>
+                        </div>
+                        <div class="latest-items" id="latestProjects">
+                            <!-- Latest projects loaded here -->
+                        </div>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Recent Messages</h3>
+                            <a href="#messages" class="btn btn-primary btn-sm">View All</a>
+                        </div>
+                        <div class="latest-items" id="recentMessages">
+                            <!-- Recent messages loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Users Management -->
+            <div id="users" class="admin-section" style="display: none;">
+                <div class="admin-table-container">
+                    <div class="admin-table-header">
+                        <h3>User Management</h3>
+                        <div class="admin-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search users...">
+                        </div>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>Joined</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTable">
+                            <!-- All users loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Projects Management -->
+            <div id="projects" class="admin-section" style="display: none;">
+                <div class="admin-table-container">
+                    <div class="admin-table-header">
+                        <h3>Project Management</h3>
+                        <div class="admin-actions">
+                            <button class="btn btn-primary" onclick="document.getElementById('addProjectModal').style.display='flex'">
+                                <i class="fas fa-plus"></i> Add Project
+                            </button>
+                            <div class="admin-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search projects...">
+                            </div>
+                        </div>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Year</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTable">
+                            <!-- Projects loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Messages Management -->
+            <div id="messages" class="admin-section" style="display: none;">
+                <div class="admin-table-container">
+                    <div class="admin-table-header">
+                        <h3>Contact Messages</h3>
+                        <div class="admin-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search messages...">
+                        </div>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="messagesTable">
+                            <!-- Messages loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Settings -->
+            <div id="settings" class="admin-section" style="display: none;">
+                <div class="admin-form-container">
+                    <div class="admin-form-header">
+                        <h3>Admin Settings</h3>
+                        <p>Manage your admin account and preferences</p>
+                    </div>
+                    
+                    <form id="adminSettingsForm">
+                        <div class="admin-form-grid">
+                            <div class="admin-form-group">
+                                <label for="adminName">Admin Name</label>
+                                <input type="text" id="adminName" value="Admin" readonly>
+                            </div>
+                            
+                            <div class="admin-form-group">
+                                <label for="adminId">Admin ID</label>
+                                <input type="text" id="adminId" value="opashishyt" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-form-group">
+                            <label>Security Note</label>
+                            <div class="security-note">
+                                <p><i class="fas fa-shield-alt"></i> Admin credentials are securely stored and never displayed.</p>
+                                <p><i class="fas fa-key"></i> Password changes require system administrator access.</p>
+                                <p><i class="fas fa-history"></i> All admin activities are logged for security auditing.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-form-actions">
+                            <button type="button" class="btn btn-primary" onclick="showAdminNotification('Admin settings updated', 'success')">
+                                <i class="fas fa-save"></i> Save Settings
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="viewActivityLog()">
+                                <i class="fas fa-history"></i> View Activity Log
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Website Settings -->
+            <div id="website" class="admin-section" style="display: none;">
+                <div class="admin-form-container">
+                    <div class="admin-form-header">
+                        <h3>Website Settings</h3>
+                        <p>Manage your portfolio website content and appearance</p>
+                    </div>
+                    
+                    <form id="settingsForm">
+                        <div class="admin-form-grid">
+                            <div class="admin-form-group">
+                                <label for="siteTitle">Website Title</label>
+                                <input type="text" id="siteTitle" placeholder="Enter website title" required>
+                            </div>
+                            
+                            <div class="admin-form-group">
+                                <label for="siteEmail">Contact Email</label>
+                                <input type="email" id="siteEmail" placeholder="Enter contact email" required>
+                            </div>
+                            
+                            <div class="admin-form-group">
+                                <label for="sitePhone">Contact Phone</label>
+                                <input type="tel" id="sitePhone" placeholder="Enter contact phone" required>
+                            </div>
+                            
+                            <div class="admin-form-group">
+                                <label for="siteLocation">Location</label>
+                                <input type="text" id="siteLocation" placeholder="Enter location" required>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-form-group">
+                            <label for="siteDescription">Website Description</label>
+                            <textarea id="siteDescription" placeholder="Enter website description" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="admin-form-grid">
+                            <div class="admin-form-group">
+                                <label>Website Logo</label>
+                                <div class="upload-area">
+                                    <img id="logoPreview" src="" alt="Logo Preview" style="display: none; max-width: 200px; margin-bottom: 10px;">
+                                    <input type="file" id="logoUpload" accept="image/*">
+                                    <p class="upload-help">Upload PNG, JPG or SVG (Max 2MB)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="admin-form-group">
+                                <label>Profile Image</label>
+                                <div class="upload-area">
+                                    <img id="profilePreview" src="" alt="Profile Preview" style="display: none; max-width: 200px; margin-bottom: 10px;">
+                                    <input type="file" id="profileUpload" accept="image/*">
+                                    <p class="upload-help">Upload PNG or JPG (Max 2MB)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="resetWebsiteSettings()">
+                                <i class="fas fa-undo"></i> Reset to Default
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Project Modal -->
+    <div class="admin-modal" id="addProjectModal">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h3>Add New Project</h3>
+                <button class="admin-modal-close" onclick="closeModal('addProjectModal')">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+                <form id="addProjectForm">
+                    <div class="admin-form-grid">
+                        <div class="admin-form-group">
+                            <label for="projectTitle">Project Title</label>
+                            <input type="text" id="projectTitle" placeholder="Enter project title" required>
+                        </div>
+                        
+                        <div class="admin-form-group">
+                            <label for="projectCategory">Category</label>
+                            <select id="projectCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="Mobile App">Mobile App</option>
+                                <option value="AI/ML">AI/ML</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Health & Fitness">Health & Fitness</option>
+                                <option value="Productivity">Productivity</option>
+                                <option value="Utility">Utility</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-form-group">
+                        <label for="projectDescription">Description</label>
+                        <textarea id="projectDescription" placeholder="Enter project description" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="admin-form-grid">
+                        <div class="admin-form-group">
+                            <label for="projectTechnologies">Technologies (comma separated)</label>
+                            <input type="text" id="projectTechnologies" placeholder="e.g., React, Node.js, MongoDB" required>
+                        </div>
+                        
+                        <div class="admin-form-group">
+                            <label for="projectStatus">Status</label>
+                            <select id="projectStatus" required>
+                                <option value="Completed">Completed</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Planning">Planning</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-form-grid">
+                        <div class="admin-form-group">
+                            <label for="projectYear">Year</label>
+                            <input type="number" id="projectYear" min="2000" max="2030" value="2024" required>
+                        </div>
+                        
+                        <div class="admin-form-group">
+                            <label for="projectImage">Image URL</label>
+                            <input type="url" id="projectImage" placeholder="Enter image URL">
+                        </div>
+                    </div>
+                    
+                    <div class="admin-form-grid">
+                        <div class="admin-form-group">
+                            <label for="projectLiveUrl">Live URL</label>
+                            <input type="url" id="projectLiveUrl" placeholder="Enter live demo URL">
+                        </div>
+                        
+                        <div class="admin-form-group">
+                            <label for="projectGithubUrl">GitHub URL</label>
+                            <input type="url" id="projectGithubUrl" placeholder="Enter GitHub URL">
+                        </div>
+                    </div>
+                    
+                    <div class="admin-modal-footer">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add Project
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('addProjectModal')">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Project Modal -->
+    <div class="admin-modal" id="editProjectModal">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h3>Edit Project</h3>
+                <button class="admin-modal-close" onclick="closeModal('editProjectModal')">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+                <form id="editProjectForm" onsubmit="updateProject(); return false;">
+                    <input type="hidden" id="editProjectId">
+                    
+                    <div class="admin-form-grid">
+                        <div class="admin-form-group">
+                            <label for="editProjectTitle">Project Title</label>
+                            <input type="text" id="editProjectTitle" required>
+                        </div>
+                        
+                        <div class="admin-form-group">
+                            <label for="editProjectCategory">Category</label>
+                            <select id="editProjectCategory" required>
+                                <option value="Web Development">Web Development</option>
+                                <option value="Mobile App">Mobile App</option>
+                                <option value="AI/ML">AI/ML</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Health & Fitness">Health & Fitness</option>
+                                <option value="Productivity">Productivity</option>
+                                <option value="Utility">Utility</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-form-group">
+                        <label for="editProjectDescription">Description</label>
+                        <textarea id="editProjectDescription" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="admin-form-grid">
+                        <div class="admin-form-group">
+                            <label for="editProjectTechnologies">Technologies</label>
+                            <input type="text" id="editProjectTechnologies" required>
+                        </div>
+                        
+                        <div class="admin-form-group">
+                            <label for="editProjectStatus">Status</label>
+                            <select id="editProjectStatus" required>
+                                <option value="Completed">Completed</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Planning">Planning</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-form-grid">
+                        <div class="admin-form-group">
+                            <label for="editProjectYear">Year</label>
+                            <input type="number" id="editProjectYear" required>
+                        </div>
+                        
+                        <div class="admin-form-group">
+                            <label for="editProjectImage">Image URL</label>
+                            <input type="url" id="editProjectImage">
+                        </div>
+                    </div>
+                    
+                    <div class="admin-form-grid">
+                        <div class="admin-form-group">
+                            <label for="editProjectLiveUrl">Live URL</label>
+                            <input type="url" id="editProjectLiveUrl">
+                        </div>
+                        
+                        <div class="admin-form-group">
+                            <label for="editProjectGithubUrl">GitHub URL</label>
+                            <input type="url" id="editProjectGithubUrl">
+                        </div>
+                    </div>
+                    
+                    <div class="admin-modal-footer">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Update Project
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('editProjectModal')">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- View Message Modal -->
+    <div class="admin-modal" id="viewMessageModal">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h3>Message Details</h3>
+                <button class="admin-modal-close" onclick="closeModal('viewMessageModal')">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+                <div class="message-details">
+                    <div class="message-field">
+                        <label>From:</label>
+                        <span id="viewMessageName"></span>
+                    </div>
+                    <div class="message-field">
+                        <label>Email:</label>
+                        <span id="viewMessageEmail"></span>
+                    </div>
+                    <div class="message-field">
+                        <label>Subject:</label>
+                        <span id="viewMessageSubject"></span>
+                    </div>
+                    <div class="message-field">
+                        <label>Date:</label>
+                        <span id="viewMessageDate"></span>
+                    </div>
+                    <div class="message-content">
+                        <label>Message:</label>
+                        <div class="message-text" id="viewMessageContent"></div>
+                    </div>
+                </div>
+                
+                <div class="admin-modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('viewMessageModal')">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="admin-script.js"></script>
+    <script>
+        // Navigation between sections
+        document.querySelectorAll('.admin-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.admin-menu a').forEach(l => {
+                    l.classList.remove('active');
+                });
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Hide all sections
+                document.querySelectorAll('.admin-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show target section
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                }
+            });
+        });
+        
+        // Update pending users badge
+        function updatePendingBadge() {
+            const pendingUsers = JSON.parse(localStorage.getItem('portfolio_pending_users') || '[]');
+            const badge = document.getElementById('pendingUsersBadge');
+            if (badge) {
+                badge.textContent = pendingUsers.length;
+                badge.style.display = pendingUsers.length > 0 ? 'inline-block' : 'none';
+            }
+        }
+        
+        // Call this function when loading dashboard
+        updatePendingBadge();
+        
+        // View activity log
+        function viewActivityLog() {
+            const activities = JSON.parse(localStorage.getItem('admin_activities') || '[]');
+            
+            if (activities.length === 0) {
+                showAdminNotification('No activity logs found', 'info');
+                return;
+            }
+            
+            let logHTML = '<h3>Activity Log</h3><div class="activity-list">';
+            
+            activities.slice(-10).reverse().forEach(activity => {
+                logHTML += `
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>${activity.description}</h4>
+                            <p>${new Date(activity.timestamp).toLocaleString()}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            logHTML += '</div>';
+            
+            // Create modal for activity log
+            const modal = document.createElement('div');
+            modal.className = 'admin-modal';
+            modal.style.display = 'flex';
+            modal.innerHTML = `
+                <div class="admin-modal-content">
+                    <div class="admin-modal-header">
+                        <h3>Admin Activity Log</h3>
+                        <button class="admin-modal-close" onclick="this.closest('.admin-modal').style.display='none'">&times;</button>
+                    </div>
+                    <div class="admin-modal-body">
+                        ${logHTML}
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Close when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        }
+        
+        // Reset website settings
+        function resetWebsiteSettings() {
+            if (!confirm('Are you sure you want to reset website settings to default?')) return;
+            
+            // Reset form
+            document.getElementById('siteTitle').value = 'Ashish Portfolio';
+            document.getElementById('siteEmail').value = 'ashish.kumar@portfolio.com';
+            document.getElementById('sitePhone').value = '+91 98765 43210';
+            document.getElementById('siteLocation').value = 'New Delhi, India';
+            document.getElementById('siteDescription').value = 'Creating amazing digital experiences with passion and precision';
+            
+            // Clear logo and profile previews
+            document.getElementById('logoPreview').style.display = 'none';
+            document.getElementById('profilePreview').style.display = 'none';
+            
+            // Clear uploaded images from localStorage
+            localStorage.removeItem('portfolio_logo');
+            localStorage.removeItem('portfolio_profile');
+            
+            showAdminNotification('Website settings reset to default', 'success');
+        }
+    </script>
+</body>
+</html>
