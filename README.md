@@ -1,4 +1,4 @@
-# Ashish Portfolio - Complete Portfolio Website with Admin Panel
+# Ashish Pratap Microbiologist - Complete Microbiologist Website with Admin Panel
 
 ## 🌟 Overview
 
