@@ -1,0 +1,532 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Antimicrobial Resistance Study",
+      "description": "Comprehensive study on antibiotic resistance patterns in hospital-acquired infections.",
+      "category": "Medical Microbiology",
+      "technologies": ["Bacterial Culture", "Kirby-Bauer Test", "PCR Analysis", "Data Analysis"],
+      "image": "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Sample collection from ICU",
+        "Antibiotic susceptibility testing",
+        "Resistance pattern analysis",
+        "Statistical data interpretation",
+        "Report generation",
+        "Recommendations for treatment"
+      ],
+      "status": "Completed",
+      "year": 2024,
+      "challenges": "Isolating pure cultures from mixed samples and standardizing testing protocols."
+    },
+    {
+      "id": 2,
+      "title": "Bacterial Culture Optimization",
+      "description": "Research on optimal growth conditions for fastidious bacterial species.",
+      "category": "Laboratory Research",
+      "technologies": ["Culture Media", "Incubation", "Microscopy", "pH Monitoring"],
+      "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Temperature optimization",
+        "pH level studies",
+        "Nutrient requirements",
+        "Growth curve analysis",
+        "Optical density measurement",
+        "Statistical validation"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 3,
+      "title": "Pathogen Identification Research",
+      "description": "Advanced techniques for rapid identification of pathogenic microorganisms.",
+      "category": "Clinical Microbiology",
+      "technologies": ["Gram Staining", "Biochemical Tests", "Molecular Methods", "Serology"],
+      "image": "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Rapid diagnostic methods",
+        "Molecular identification",
+        "Antigen detection",
+        "Culture-based methods",
+        "Quality control protocols",
+        "Result interpretation"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 4,
+      "title": "Vaccine Development Study",
+      "description": "Research on novel vaccine candidates for bacterial infections.",
+      "category": "Immunology",
+      "technologies": ["Animal Models", "ELISA", "Flow Cytometry", "Statistical Analysis"],
+      "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Antigen preparation",
+        "Animal immunization",
+        "Antibody titer measurement",
+        "Challenge studies",
+        "Safety evaluation",
+        "Efficacy assessment"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 5,
+      "title": "Microbial Genetics Research",
+      "description": "Study of genetic mechanisms in antibiotic resistance development.",
+      "category": "Molecular Biology",
+      "technologies": ["DNA Extraction", "PCR", "Gel Electrophoresis", "Sequencing"],
+      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Plasmid isolation",
+        "Gene amplification",
+        "Restriction analysis",
+        "Sequence alignment",
+        "Mutation detection",
+        "Gene expression"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 6,
+      "title": "Environmental Microbiology",
+      "description": "Analysis of microbial diversity in different environmental samples.",
+      "category": "Environmental Science",
+      "technologies": ["Sample Collection", "Culture Methods", "Microscopy", "Data Analysis"],
+      "image": "https://images.unsplash.com/photo-1500964757637-c85e8a162699?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Water sample analysis",
+        "Soil microbiology",
+        "Air quality monitoring",
+        "Pathogen detection",
+        "Biodiversity assessment",
+        "Statistical reporting"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 7,
+      "title": "Food Microbiology Safety",
+      "description": "Quality control and safety assessment of food products.",
+      "category": "Food Safety",
+      "technologies": ["Microbial Testing", "Culture Methods", "Rapid Tests", "Quality Control"],
+      "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Total plate count",
+        "Coliform testing",
+        "Pathogen screening",
+        "Shelf life studies",
+        "Preservative testing",
+        "Safety certification"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 8,
+      "title": "Pharmaceutical Microbiology",
+      "description": "Microbial quality control in pharmaceutical manufacturing.",
+      "category": "Pharmaceutical",
+      "technologies": ["Sterility Testing", "Endotoxin Testing", "Environmental Monitoring", "Documentation"],
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Sterility assurance",
+        "Cleanroom monitoring",
+        "Water system testing",
+        "Raw material testing",
+        "Finished product testing",
+        "Regulatory compliance"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 9,
+      "title": "Clinical Laboratory Research",
+      "description": "Development of new diagnostic methods for clinical microbiology.",
+      "category": "Clinical Research",
+      "technologies": ["Diagnostic Kits", "Validation Studies", "Quality Assurance", "Data Management"],
+      "image": "https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Method development",
+        "Clinical validation",
+        "Sensitivity analysis",
+        "Specificity testing",
+        "Cost-effectiveness",
+        "Implementation guidance"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 10,
+      "title": "Water Quality Microbiology",
+      "description": "Microbial analysis of drinking water and wastewater.",
+      "category": "Environmental",
+      "technologies": ["MPN Method", "Membrane Filtration", "Pathogen Detection", "Reporting"],
+      "image": "https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Coliform testing",
+        "E. coli detection",
+        "Legionella screening",
+        "Total bacterial count",
+        "Chemical parameters",
+        "Safety assessment"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 11,
+      "title": "Microbial Biotechnology",
+      "description": "Application of microorganisms in industrial processes.",
+      "category": "Biotechnology",
+      "technologies": ["Fermentation", "Enzyme Production", "Strain Improvement", "Process Optimization"],
+      "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Strain selection",
+        "Process development",
+        "Yield optimization",
+        "Quality control",
+        "Scale-up studies",
+        "Cost analysis"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 12,
+      "title": "Hospital Infection Control",
+      "description": "Study of infection prevention in healthcare settings.",
+      "category": "Epidemiology",
+      "technologies": ["Surveillance", "Data Analysis", "Intervention Studies", "Education"],
+      "image": "https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Infection rate monitoring",
+        "Hand hygiene compliance",
+        "Environmental sampling",
+        "Outbreak investigation",
+        "Prevention strategies",
+        "Staff training"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 13,
+      "title": "Microbial Biochemistry",
+      "description": "Study of biochemical pathways in microorganisms.",
+      "category": "Biochemistry",
+      "technologies": ["Enzyme Assays", "Metabolite Analysis", "Chromatography", "Spectroscopy"],
+      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Metabolic pathway analysis",
+        "Enzyme characterization",
+        "Product identification",
+        "Kinetic studies",
+        "Inhibitor screening",
+        "Therapeutic potential"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 14,
+      "title": "Microbial Ecology",
+      "description": "Study of microbial communities and their interactions.",
+      "category": "Ecology",
+      "technologies": ["Community Analysis", "Metagenomics", "Statistical Ecology", "Modeling"],
+      "image": "https://images.unsplash.com/photo-1500964757637-c85e8a162699?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Community structure",
+        "Species interactions",
+        "Environmental factors",
+        "Diversity indices",
+        "Ecological modeling",
+        "Conservation aspects"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 15,
+      "title": "Diagnostic Microbiology",
+      "description": "Development of rapid diagnostic tests for infectious diseases.",
+      "category": "Diagnostics",
+      "technologies": ["Rapid Tests", "Molecular Diagnostics", "Point-of-Care", "Validation"],
+      "image": "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Test development",
+        "Sensitivity testing",
+        "Specificity analysis",
+        "Field validation",
+        "Cost evaluation",
+        "Implementation guide"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 16,
+      "title": "Antimicrobial Stewardship",
+      "description": "Programs to optimize antibiotic use and reduce resistance.",
+      "category": "Public Health",
+      "technologies": ["Data Analysis", "Education Programs", "Policy Development", "Monitoring"],
+      "image": "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Prescription audit",
+        "Education initiatives",
+        "Policy formulation",
+        "Compliance monitoring",
+        "Outcome measurement",
+        "Quality improvement"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 17,
+      "title": "Microbial Physiology",
+      "description": "Study of microbial growth and metabolic processes.",
+      "category": "Physiology",
+      "technologies": ["Growth Studies", "Metabolic Analysis", "Stress Response", "Adaptation"],
+      "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Growth optimization",
+        "Nutrient requirements",
+        "Stress responses",
+        "Adaptation mechanisms",
+        "Metabolic regulation",
+        "Therapeutic implications"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 18,
+      "title": "Foodborne Pathogen Detection",
+      "description": "Rapid detection methods for foodborne pathogens.",
+      "category": "Food Safety",
+      "technologies": ["Rapid Methods", "Molecular Detection", "Culture Confirmation", "Validation"],
+      "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Pathogen screening",
+        "Rapid detection",
+        "Confirmation tests",
+        "Quantitative analysis",
+        "Method validation",
+        "Industry application"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 19,
+      "title": "Microbial Biofilms",
+      "description": "Study of microbial communities on surfaces and medical devices.",
+      "category": "Medical Research",
+      "technologies": ["Biofilm Models", "Microscopy", "Quantification", "Control Methods"],
+      "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Biofilm formation",
+        "Structural analysis",
+        "Antibiotic resistance",
+        "Control strategies",
+        "Medical implications",
+        "Treatment approaches"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 20,
+      "title": "Laboratory Quality Management",
+      "description": "Implementation of quality systems in microbiology laboratories.",
+      "category": "Quality Management",
+      "technologies": ["Quality Systems", "Documentation", "Auditing", "Continuous Improvement"],
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Quality manual",
+        "SOP development",
+        "Internal audits",
+        "Proficiency testing",
+        "Corrective actions",
+        "Accreditation preparation"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 21,
+      "title": "Microbial Taxonomy",
+      "description": "Classification and identification of microorganisms.",
+      "category": "Systematics",
+      "technologies": ["Sequencing", "Phylogenetics", "Classification", "Database Management"],
+      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Molecular identification",
+        "Phylogenetic analysis",
+        "Taxonomic classification",
+        "Database development",
+        "Species validation",
+        "Publication support"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 22,
+      "title": "Microbial Fermentation",
+      "description": "Optimization of microbial fermentation processes.",
+      "category": "Industrial Microbiology",
+      "technologies": ["Fermentation", "Process Control", "Product Recovery", "Scale-up"],
+      "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Process optimization",
+        "Yield improvement",
+        "Quality control",
+        "Cost reduction",
+        "Scale-up studies",
+        "Commercialization"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 23,
+      "title": "Microbial Pathogenesis",
+      "description": "Study of disease-causing mechanisms in microorganisms.",
+      "category": "Pathogenesis",
+      "technologies": ["Animal Models", "Cell Culture", "Molecular Biology", "Imaging"],
+      "image": "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Virulence factors",
+        "Host-pathogen interaction",
+        "Immune response",
+        "Therapeutic targets",
+        "Vaccine development",
+        "Clinical correlation"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 24,
+      "title": "Environmental Pathogen Monitoring",
+      "description": "Surveillance of pathogens in environmental samples.",
+      "category": "Environmental Health",
+      "technologies": ["Sampling", "Detection Methods", "Risk Assessment", "Reporting"],
+      "image": "https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Environmental sampling",
+        "Pathogen detection",
+        "Risk assessment",
+        "Public health reporting",
+        "Control measures",
+        "Prevention strategies"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 25,
+      "title": "Microbial Genomics",
+      "description": "Genomic analysis of microorganisms for research and applications.",
+      "category": "Genomics",
+      "technologies": ["Sequencing", "Bioinformatics", "Genome Analysis", "Annotation"],
+      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+      "liveUrl": "",
+      "githubUrl": "",
+      "features": [
+        "Genome sequencing",
+        "Comparative genomics",
+        "Functional annotation",
+        "Pathway analysis",
+        "Drug target identification",
+        "Publication support"
+      ],
+      "status": "Completed",
+      "year": 2024
+    }
+  ],
+  "categories": [
+    "All",
+    "Medical Microbiology",
+    "Laboratory Research",
+    "Clinical Microbiology",
+    "Immunology",
+    "Molecular Biology",
+    "Environmental Science",
+    "Food Safety",
+    "Pharmaceutical",
+    "Clinical Research",
+    "Environmental",
+    "Biotechnology",
+    "Epidemiology",
+    "Biochemistry",
+    "Ecology",
+    "Diagnostics",
+    "Public Health",
+    "Physiology",
+    "Medical Research",
+    "Quality Management",
+    "Systematics",
+    "Industrial Microbiology",
+    "Pathogenesis",
+    "Environmental Health",
+    "Genomics"
+  ]
+}
