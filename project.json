@@ -1,0 +1,451 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Antimicrobial Resistance in ICU Pathogens",
+      "description": "Study of antibiotic resistance patterns in bacteria isolated from ICU patients.",
+      "category": "Medical Microbiology",
+      "technologies": ["Bacterial Culture", "Kirby-Bauer Test", "PCR", "Statistical Analysis"],
+      "image": "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&h=600&fit=crop",
+      "features": [
+        "Collection of 200+ clinical samples",
+        "Identification of MDR bacteria",
+        "Antibiogram profiling",
+        "Resistance gene detection",
+        "Infection control recommendations"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 2,
+      "title": "Novel Antibiotic Screening from Soil Microbes",
+      "description": "Isolation and characterization of antibiotic-producing bacteria from soil samples.",
+      "category": "Drug Discovery",
+      "technologies": ["Soil Sampling", "Agar Diffusion", "Chromatography", "Spectroscopy"],
+      "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop",
+      "features": [
+        "Collection from diverse ecosystems",
+        "Primary screening against pathogens",
+        "Secondary metabolite extraction",
+        "Minimum inhibitory concentration",
+        "Stability testing"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 3,
+      "title": "Rapid Diagnostic Kit for UTI Pathogens",
+      "description": "Development of rapid detection kit for urinary tract infection pathogens.",
+      "category": "Diagnostics",
+      "technologies": ["Lateral Flow Assay", "Antibody Production", "Sensitivity Testing", "Field Validation"],
+      "image": "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop",
+      "features": [
+        "Antigen selection and purification",
+        "Monoclonal antibody development",
+        "Membrane optimization",
+        "Clinical sample testing",
+        "Cost-effectiveness analysis"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 4,
+      "title": "Biofilm Formation in Medical Devices",
+      "description": "Study of bacterial biofilm formation on catheters and implants.",
+      "category": "Medical Research",
+      "technologies": ["Scanning EM", "Confocal Microscopy", "Crystal Violet", "qPCR"],
+      "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop",
+      "features": [
+        "Biofilm model development",
+        "Adhesion quantification",
+        "Matrix composition analysis",
+        "Antibiotic penetration study",
+        "Prevention strategies"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 5,
+      "title": "Molecular Epidemiology of MRSA",
+      "description": "Genetic analysis of Methicillin-resistant Staphylococcus aureus strains.",
+      "category": "Molecular Biology",
+      "technologies": ["PFGE", "MLST", "Whole Genome Sequencing", "Phylogenetics"],
+      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+      "features": [
+        "Strain collection from hospitals",
+        "DNA extraction and purification",
+        "mecA gene detection",
+        "Phylogenetic tree construction",
+        "Transmission pattern analysis"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 6,
+      "title": "Waterborne Pathogen Surveillance",
+      "description": "Monitoring of pathogenic microorganisms in drinking water sources.",
+      "category": "Environmental",
+      "technologies": ["Membrane Filtration", "MPN Method", "PCR Detection", "GIS Mapping"],
+      "image": "https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?w=800&h=600&fit=crop",
+      "features": [
+        "Monthly water sampling",
+        "Indicator organism testing",
+        "Pathogen-specific detection",
+        "Seasonal variation study",
+        "Risk assessment mapping"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 7,
+      "title": "Probiotic Development for Gut Health",
+      "description": "Isolation and characterization of probiotic bacteria from fermented foods.",
+      "category": "Food Microbiology",
+      "technologies": ["Anaerobic Culture", "Acid Tolerance", "Bile Resistance", "Adhesion Assay"],
+      "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop",
+      "features": [
+        "Screening from traditional foods",
+        "Safety assessment studies",
+        "Gastrointestinal survival",
+        "Antimicrobial production",
+        "Stability in food matrix"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 8,
+      "title": "Fungal Infection Diagnostic Protocol",
+      "description": "Standardization of diagnostic methods for invasive fungal infections.",
+      "category": "Mycology",
+      "technologies": ["Sabouraud Agar", "Lactophenol Cotton Blue", "Antifungal Testing", "Molecular ID"],
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&h=600&fit=crop",
+      "features": [
+        "Culture media optimization",
+        "Morphological identification",
+        "Antifungal susceptibility",
+        "PCR-based detection",
+        "Turnaround time reduction"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 9,
+      "title": "Wound Infection Microbiome Analysis",
+      "description": "Microbial community analysis in chronic wound infections using NGS.",
+      "category": "Clinical Research",
+      "technologies": ["16S rRNA Sequencing", "Metagenomics", "Bioinformatics", "Statistical Analysis"],
+      "image": "https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?w=800&h=600&fit=crop",
+      "features": [
+        "Sample collection protocol",
+        "DNA extraction optimization",
+        "Sequencing library prep",
+        "Microbiome profiling",
+        "Healing correlation study"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 10,
+      "title": "Hospital Surface Contamination Study",
+      "description": "Assessment of microbial contamination on hospital surfaces and equipment.",
+      "category": "Infection Control",
+      "technologies": ["Surface Swabbing", "ATP Bioluminescence", "Culture Methods", "Disinfection Testing"],
+      "image": "https://images.unsplash.com/photo-1516549655669-df66303d6d8c?w=800&h=600&fit=crop",
+      "features": [
+        "High-touch surface identification",
+        "Microbial load quantification",
+        "Pathogen isolation",
+        "Disinfectant efficacy",
+        "Hand hygiene compliance"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 11,
+      "title": "Zoonotic Pathogen Screening",
+      "description": "Detection of zoonotic pathogens in animal and environmental samples.",
+      "category": "One Health",
+      "technologies": ["ELISA", "PCR", "Cell Culture", "Serotyping"],
+      "image": "https://images.unsplash.com/photo-1534188753412-9f0337d0b82d?w=800&h=600&fit=crop",
+      "features": [
+        "Cross-species transmission study",
+        "Reservoir identification",
+        "Risk factor analysis",
+        "Surveillance protocol",
+        "Prevention strategies"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 12,
+      "title": "Antimicrobial Coating Development",
+      "description": "Development of antimicrobial coatings for medical device surfaces.",
+      "category": "Biomaterials",
+      "technologies": ["Nanoparticle Synthesis", "Coating Application", "Antimicrobial Testing", "Cytotoxicity"],
+      "image": "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=600&fit=crop",
+      "features": [
+        "Material characterization",
+        "Coating durability testing",
+        "Broad-spectrum activity",
+        "Safety assessment",
+        "Cost analysis"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 13,
+      "title": "Viral Load Quantification Method",
+      "description": "Standardization of viral load quantification in clinical samples.",
+      "category": "Virology",
+      "technologies": ["qPCR", "Digital PCR", "Standard Curve", "Quality Control"],
+      "image": "https://images.unsplash.com/photo-1581093458797-7e0417e24eb5?w=800&h=600&fit=crop",
+      "features": [
+        "Primer-probe design",
+        "Standard preparation",
+        "Limit of detection",
+        "Reproducibility testing",
+        "Clinical validation"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 14,
+      "title": "Food Spoilage Microorganism Study",
+      "description": "Identification and control of spoilage microorganisms in packaged foods.",
+      "category": "Food Safety",
+      "technologies": ["Shelf Life Testing", "Gas Chromatography", "Microbial Enumeration", "Preservative Testing"],
+      "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&h=600&fit=crop",
+      "features": [
+        "Isolation from spoiled foods",
+        "Growth curve analysis",
+        "Metabolite identification",
+        "Packaging interaction",
+        "Preservation optimization"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 15,
+      "title": "Antibiotic Residue in Meat Products",
+      "description": "Detection and quantification of antibiotic residues in animal products.",
+      "category": "Food Safety",
+      "technologies": ["HPLC", "Mass Spectrometry", "Sample Extraction", "Method Validation"],
+      "image": "https://images.unsplash.com/photo-1558030089-02acba3c214e?w=800&h=600&fit=crop",
+      "features": [
+        "Sample collection protocol",
+        "Extraction optimization",
+        "Chromatographic separation",
+        "Method validation",
+        "Market surveillance"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 16,
+      "title": "Microbial Fuel Cell Development",
+      "description": "Electricity generation using microbial consortia in fuel cells.",
+      "category": "Environmental",
+      "technologies": ["Electrode Design", "Microbial Inoculation", "Voltage Measurement", "Optimization"],
+      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&h=600&fit=crop",
+      "features": [
+        "Consortium development",
+        "Electrode material testing",
+        "Substrate optimization",
+        "Power output measurement",
+        "Scale-up potential"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 17,
+      "title": "Phage Therapy for MDR Infections",
+      "description": "Isolation and characterization of bacteriophages against multidrug-resistant bacteria.",
+      "category": "Therapeutics",
+      "technologies": ["Phage Isolation", "Plaque Assay", "Host Range", "Genome Sequencing"],
+      "image": "https://images.unsplash.com/photo-1581093588401-eea8c4c85d5c?w=800&h=600&fit=crop",
+      "features": [
+        "Environmental phage isolation",
+        "Host specificity testing",
+        "Killing curve analysis",
+        "Cocktail formulation",
+        "Safety assessment"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 18,
+      "title": "Laboratory Quality Assurance Program",
+      "description": "Implementation of quality management system in diagnostic laboratory.",
+      "category": "Quality Management",
+      "technologies": ["SOP Development", "Internal Audit", "Proficiency Testing", "Documentation"],
+      "image": "https://images.unsplash.com/photo-1581092160607-ee22731b7d64?w=800&h=600&fit=crop",
+      "features": [
+        "Quality manual preparation",
+        "Process standardization",
+        "Competency assessment",
+        "Corrective actions",
+        "Accreditation preparation"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 19,
+      "title": "Airborne Pathogen Monitoring",
+      "description": "Assessment of microbial air quality in healthcare settings.",
+      "category": "Environmental",
+      "technologies": ["Air Sampling", "Impaction Method", "Culture Analysis", "Particle Counting"],
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
+      "features": [
+        "Sampling site selection",
+        "Volume standardization",
+        "Pathogen identification",
+        "Correlation with infections",
+        "Ventilation assessment"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 20,
+      "title": "Rapid AST using Microfluidics",
+      "description": "Development of microfluidic device for rapid antibiotic susceptibility testing.",
+      "category": "Diagnostics",
+      "technologies": ["Microfabrication", "Chip Design", "Imaging", "Data Analysis"],
+      "image": "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=600&fit=crop",
+      "features": [
+        "Chip design optimization",
+        "Sample loading protocol",
+        "Growth monitoring",
+        "Result interpretation",
+        "Clinical validation"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 21,
+      "title": "Microbial Bioremediation of Heavy Metals",
+      "description": "Use of microorganisms for removal of heavy metals from contaminated sites.",
+      "category": "Environmental",
+      "technologies": ["Biosorption", "Biomining", "Atomic Absorption", "Strain Improvement"],
+      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&h=600&fit=crop",
+      "features": [
+        "Metal-resistant strain isolation",
+        "Optimization of conditions",
+        "Removal efficiency",
+        "Mechanism study",
+        "Field application"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 22,
+      "title": "Point-of-Care Diagnostic Device",
+      "description": "Development of handheld device for rapid pathogen detection.",
+      "category": "Diagnostics",
+      "technologies": ["LAMP Assay", "Lateral Flow", "Smartphone Integration", "Field Testing"],
+      "image": "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop",
+      "features": [
+        "Assay development",
+        "Device prototyping",
+        "Sensitivity optimization",
+        "User interface design",
+        "Field validation"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 23,
+      "title": "Microbial Production of Biofuels",
+      "description": "Optimization of microbial strains for biofuel production.",
+      "category": "Biotechnology",
+      "technologies": ["Fermentation", "Metabolic Engineering", "Product Analysis", "Scale-up"],
+      "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop",
+      "features": [
+        "Strain selection",
+        "Substrate optimization",
+        "Yield improvement",
+        "Process economics",
+        "Sustainability assessment"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 24,
+      "title": "Hospital Outbreak Investigation",
+      "description": "Epidemiological investigation of nosocomial infection outbreak.",
+      "category": "Epidemiology",
+      "technologies": ["Case-Control Study", "Molecular Typing", "Statistical Analysis", "Control Measures"],
+      "image": "https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?w=800&h=600&fit=crop",
+      "features": [
+        "Case identification",
+        "Source tracking",
+        "Risk factor analysis",
+        "Control implementation",
+        "Outbreak report"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 25,
+      "title": "Antimicrobial Stewardship Program",
+      "description": "Implementation and evaluation of antibiotic stewardship in hospital.",
+      "category": "Public Health",
+      "technologies": ["Data Analytics", "Prescription Audit", "Education Programs", "Outcome Measurement"],
+      "image": "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&h=600&fit=crop",
+      "features": [
+        "Baseline assessment",
+        "Intervention design",
+        "Physician education",
+        "Compliance monitoring",
+        "Impact evaluation"
+      ],
+      "status": "Completed",
+      "year": 2023
+    }
+  ],
+  "categories": [
+    "All",
+    "Medical Microbiology",
+    "Drug Discovery",
+    "Diagnostics",
+    "Medical Research",
+    "Molecular Biology",
+    "Environmental",
+    "Food Microbiology",
+    "Mycology",
+    "Clinical Research",
+    "Infection Control",
+    "One Health",
+    "Biomaterials",
+    "Virology",
+    "Food Safety",
+    "Therapeutics",
+    "Quality Management",
+    "Biotechnology",
+    "Epidemiology",
+    "Public Health"
+  ]
+}
