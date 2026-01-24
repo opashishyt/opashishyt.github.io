@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashish Pratap | Medical Microbiologist</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="assets/logo.png" alt="Microbiologist" id="websiteLogo">
+                <span>Ashish Pratap</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#projects">Research</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <!-- Auth Buttons -->
+            <div id="authButtons" class="auth-buttons">
+                <a href="#" class="auth-btn login" onclick="showLoginModal()">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <a href="#" class="auth-btn signup" onclick="showSignupModal()">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </a>
+            </div>
+            
+            <!-- User Menu (shown when logged in) -->
+            <div id="userMenu" class="user-menu" style="display: none;">
+                <div class="user-avatar" id="userAvatar">
+                    <span id="userInitials">AP</span>
+                </div>
+                <div class="user-info">
+                    <span class="user-name" id="userName">Ashish</span>
+                    <span class="user-email" id="userEmail">ashish@example.com</span>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+            
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Ashish Pratap</span></h1>
+                <h2 class="hero-subtitle">Medical Microbiologist & Research Scientist</h2>
+                <p class="hero-description">With 2+ years of experience in clinical microbiology, antimicrobial resistance research, and laboratory diagnostics. Specializing in bacterial culture, molecular techniques, and infectious disease research.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-flask"></i> View Research
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Contact Me
+                    </a>
+                    <a href="assets/Ashish-CV.pdf" download class="btn btn-success">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>25+</h3>
+                        <p>Research Studies</p>
+                    </div>
+                    <div class="stat">
+                        <h3>2+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat">
+                        <h3>15+</h3>
+                        <p>Lab Techniques</p>
+                    </div>
+                    <div class="stat">
+                        <h3>5+</h3>
+                        <p>Publications</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/profile.jpg" alt="Ashish Pratap - Medical Microbiologist" id="profileImage">
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My <span class="highlight">Research</span></h2>
+                <p class="section-subtitle">A collection of my microbiology research studies and laboratory work</p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="category-filters" id="categoryFilters">
+                <!-- Categories loaded from JSON -->
+            </div>
+
+            <!-- Search Box -->
+            <div class="project-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="projectSearch" placeholder="Search research by title, technique or category...">
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects loaded from JSON -->
+            </div>
+
+            <!-- Loading -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Loading research projects...</p>
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No research found</h3>
+                <p>Try adjusting your search criteria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About <span class="highlight">Me</span></h2>
+                <p class="section-subtitle">Get to know more about my background and expertise in microbiology</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="assets/profile-about.jpg" alt="About Ashish Pratap" id="aboutImage">
+                </div>
+                <div class="about-text">
+                    <h3>Medical Microbiologist & Research Scientist</h3>
+                    <p>Hello! I'm <strong>Ashish Pratap</strong>, a passionate medical microbiologist with 2+ years of experience in clinical microbiology and research. I specialize in infectious disease diagnosis, antimicrobial resistance studies, and laboratory techniques.</p>
+                    
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-user"></i> Name:</span>
+                            <span class="info-value" id="userFullName">Ashish Pratap</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-envelope"></i> Email:</span>
+                            <span class="info-value" id="userEmailId">opashishytff@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-phone"></i> Phone:</span>
+                            <span class="info-value" id="userPhone">+91 84180 78994</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-map-marker-alt"></i> Location:</span>
+                            <span class="info-value" id="userLocation">New Delhi, India</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-graduation-cap"></i> Education:</span>
+                            <span class="info-value" id="userEducation">B.sc Microbiology</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-briefcase"></i> Experience:</span>
+                            <span class="info-value" id="userExperience">2+ Years Research</span>
+                        </div>
+                    </div>
+                    
+                    <p>I specialize in bacterial culture techniques, antibiotic susceptibility testing, molecular diagnostics, and infection control protocols. My expertise includes clinical laboratory work, research methodology, and data analysis in microbiology.</p>
+                    
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+                <p class="section-subtitle">Microbiology techniques and laboratory skills I specialize in</p>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-microscope"></i> Laboratory Techniques</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>Bacterial Culture</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Antibiotic Testing</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Gram Staining</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 88%"></div></div>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>PCR Analysis</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Microscopy</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div>
+                            <span>80%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-dna"></i> Molecular Biology</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>DNA Extraction</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 87%"></div></div>
+                            <span>87%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Gel Electrophoresis</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Sequencing</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 82%"></div></div>
+                            <span>82%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Gene Amplification</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 88%"></div></div>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Plasmid Isolation</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                            <span>85%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-clipboard-check"></i> Research & Analysis</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>Data Analysis</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Statistical Methods</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Research Design</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Lab Documentation</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 70%"></div></div>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span>Quality Control</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                            <span>85%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+                <p class="section-subtitle">Feel free to contact me for research collaboration or opportunities</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p id="contactEmail">opashishytff@gmail.com</p>
+                        <a href="mailto:opashishytff@gmail.com" class="contact-link">Send Email</a>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p id="contactPhone">+91 84180 78994</p>
+                        <a href="tel:+918418078994" class="contact-link">Call Now</a>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p id="contactLocation">New Delhi, India</p>
+                        <a href="https://maps.google.com" target="_blank" class="contact-link">View on Map</a>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Availability</h3>
+                        <p>Mon - Fri: 9AM - 6PM</p>
+                        <p>Weekends: Available</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="contactName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="contactEmailInput" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="contactSubject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="contactMessage" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#" class="logo">
+                        <img src="assets/logo.png" alt="Microbiologist" id="footerLogo">
+                        <span>Ashish Pratap</span>
+                    </a>
+                    <p>Medical Microbiologist & Research Scientist specializing in infectious diseases and laboratory diagnostics</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-researchgate"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-google-scholar"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#projects">Research</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="admin/" target="_blank">Admin Panel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>My Expertise</h3>
+                    <ul>
+                        <li>Clinical Microbiology</li>
+                        <li>Antibiotic Testing</li>
+                        <li>Molecular Diagnostics</li>
+                        <li>Infection Control</li>
+                        <li>Research Methodology</li>
+                        <li>Data Analysis</li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Research Updates</h3>
+                    <p>Subscribe to get updates about my latest research and publications</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ashish Pratap. All rights reserved. | Designed for Medical Research Community</p>
+                <p>Email: opashishytff@gmail.com | Phone: +91 84180 78994</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+            <div class="modal-body">
+                <h2><i class="fas fa-sign-in-alt"></i> User Login</h2>
+                <form id="userLoginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox" id="rememberMe">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <div class="modal-footer">
+                        <p>Don't have an account? <a href="#" onclick="closeModal('loginModal'); showSignupModal()">Sign Up</a></p>
+                        <p>Admin? <a href="admin/" target="_blank">Go to Admin Panel</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('signupModal')">&times;</span>
+            <div class="modal-body">
+                <h2><i class="fas fa-user-plus"></i> Create Account</h2>
+                <form id="userSignupForm">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPhone">Phone Number</label>
+                        <input type="tel" id="signupPhone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="Create a password" required>
+                        <div class="password-strength">
+                            <div class="strength-bar" id="passwordStrength"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span>I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-user-plus"></i> Create Account
+                    </button>
+                    <div class="modal-footer">
+                        <p>Already have an account? <a href="#" onclick="closeModal('signupModal'); showLoginModal()">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content large">
+            <span class="close-modal" onclick="closeModal('projectModal')">&times;</span>
+            <div class="modal-body" id="projectModalBody">
+                <!-- Project details loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
