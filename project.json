@@ -1,0 +1,180 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Antimicrobial Resistance in ICU Pathogens",
+      "description": "Study of antibiotic resistance patterns in bacteria isolated from ICU patients.",
+      "category": "Medical Microbiology",
+      "technologies": ["Bacterial Culture", "Kirby-Bauer Test", "PCR", "Statistical Analysis"],
+      "image": "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&h=600&fit=crop",
+      "features": [
+        "Collection of 200+ clinical samples",
+        "Identification of MDR bacteria",
+        "Antibiogram profiling",
+        "Resistance gene detection",
+        "Infection control recommendations"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 2,
+      "title": "Novel Antibiotic Screening from Soil Microbes",
+      "description": "Isolation and characterization of antibiotic-producing bacteria from soil samples.",
+      "category": "Drug Discovery",
+      "technologies": ["Soil Sampling", "Agar Diffusion", "Chromatography", "Spectroscopy"],
+      "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop",
+      "features": [
+        "Collection from diverse ecosystems",
+        "Primary screening against pathogens",
+        "Secondary metabolite extraction",
+        "Minimum inhibitory concentration",
+        "Stability testing"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 3,
+      "title": "Rapid Diagnostic Kit for UTI Pathogens",
+      "description": "Development of rapid detection kit for urinary tract infection pathogens.",
+      "category": "Diagnostics",
+      "technologies": ["Lateral Flow Assay", "Antibody Production", "Sensitivity Testing", "Field Validation"],
+      "image": "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop",
+      "features": [
+        "Antigen selection and purification",
+        "Monoclonal antibody development",
+        "Membrane optimization",
+        "Clinical sample testing",
+        "Cost-effectiveness analysis"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 4,
+      "title": "Biofilm Formation in Medical Devices",
+      "description": "Study of bacterial biofilm formation on catheters and implants.",
+      "category": "Medical Research",
+      "technologies": ["Scanning EM", "Confocal Microscopy", "Crystal Violet", "qPCR"],
+      "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop",
+      "features": [
+        "Biofilm model development",
+        "Adhesion quantification",
+        "Matrix composition analysis",
+        "Antibiotic penetration study",
+        "Prevention strategies"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 5,
+      "title": "Molecular Epidemiology of MRSA",
+      "description": "Genetic analysis of Methicillin-resistant Staphylococcus aureus strains.",
+      "category": "Molecular Biology",
+      "technologies": ["PFGE", "MLST", "Whole Genome Sequencing", "Phylogenetics"],
+      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+      "features": [
+        "Strain collection from hospitals",
+        "DNA extraction and purification",
+        "mecA gene detection",
+        "Phylogenetic tree construction",
+        "Transmission pattern analysis"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 6,
+      "title": "Waterborne Pathogen Surveillance",
+      "description": "Monitoring of pathogenic microorganisms in drinking water sources.",
+      "category": "Environmental",
+      "technologies": ["Membrane Filtration", "MPN Method", "PCR Detection", "GIS Mapping"],
+      "image": "https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?w=800&h=600&fit=crop",
+      "features": [
+        "Monthly water sampling",
+        "Indicator organism testing",
+        "Pathogen-specific detection",
+        "Seasonal variation study",
+        "Risk assessment mapping"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 7,
+      "title": "Probiotic Development for Gut Health",
+      "description": "Isolation and characterization of probiotic bacteria from fermented foods.",
+      "category": "Food Microbiology",
+      "technologies": ["Anaerobic Culture", "Acid Tolerance", "Bile Resistance", "Adhesion Assay"],
+      "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop",
+      "features": [
+        "Screening from traditional foods",
+        "Safety assessment studies",
+        "Gastrointestinal survival",
+        "Antimicrobial production",
+        "Stability in food matrix"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 8,
+      "title": "Fungal Infection Diagnostic Protocol",
+      "description": "Standardization of diagnostic methods for invasive fungal infections.",
+      "category": "Mycology",
+      "technologies": ["Sabouraud Agar", "Lactophenol Cotton Blue", "Antifungal Testing", "Molecular ID"],
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&h=600&fit=crop",
+      "features": [
+        "Culture media optimization",
+        "Morphological identification",
+        "Antifungal susceptibility",
+        "PCR-based detection",
+        "Turnaround time reduction"
+      ],
+      "status": "Completed",
+      "year": 2024
+    },
+    {
+      "id": 9,
+      "title": "Wound Infection Microbiome Analysis",
+      "description": "Microbial community analysis in chronic wound infections using NGS.",
+      "category": "Clinical Research",
+      "technologies": ["16S rRNA Sequencing", "Metagenomics", "Bioinformatics", "Statistical Analysis"],
+      "image": "https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?w=800&h=600&fit=crop",
+      "features": [
+        "Sample collection protocol",
+        "DNA extraction optimization",
+        "Sequencing library prep",
+        "Microbiome profiling",
+        "Healing correlation study"
+      ],
+      "status": "In Progress",
+      "year": 2024
+    },
+    {
+      "id": 10,
+      "title": "Hospital Surface Contamination Study",
+      "description": "Assessment of microbial contamination on hospital surfaces and equipment.",
+      "category": "Infection Control",
+      "technologies": ["Surface Swabbing", "ATP Bioluminescence", "Culture Methods", "Disinfection Testing"],
+      "image": "https://images.unsplash.com/photo-1516549655669-df66303d6d8c?w=800&h=600&fit=crop",
+      "features": [
+        "High-touch surface identification",
+        "Microbial load quantification",
+        "Pathogen isolation",
+        "Disinfectant efficacy",
+        "Hand hygiene compliance"
+      ],
+      "status": "Completed",
+      "year": 2023
+    },
+    {
+      "id": 11,
+      "title": "Zoonotic Pathogen Screening",
+      "description": "Detection of zoonotic pathogens in animal and environmental samples.",
+      "category": "One Health",
+      "technologies": ["ELISA", "PCR", "Cell Culture", "Serotyping"],
+      "image": "https://images.unsplash.com/photo-1534188753412-9f0337d0b82d?w=800&h=600&fit=crop",
+      "features
