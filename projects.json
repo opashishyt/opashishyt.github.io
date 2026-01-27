@@ -1,0 +1,140 @@
+[
+  {
+    "id": 1,
+    "title": "Antibiotic Resistance in Clinical Settings",
+    "shortDescription": "Comprehensive study of multi-drug resistant bacteria in hospital environments",
+    "fullDescription": "This extensive research focuses on identifying, characterizing, and understanding antibiotic-resistant bacterial strains in various hospital settings. We employ advanced genomic techniques to study resistance mechanisms and develop novel detection methods for early identification of resistant pathogens.",
+    "image": "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-4.0.3&auto=format&fit=crop&w=1032&q=80",
+    "tags": ["Antibiotic Resistance", "Clinical Microbiology", "Genomics", "Pathogen Research"],
+    "category": "ongoing",
+    "details": [
+      "Systematic sample collection from ICU and surgical wards",
+      "Isolation and identification of resistant bacterial strains",
+      "Whole genome sequencing of resistant isolates",
+      "Analysis of resistance genes and mobile genetic elements",
+      "Development of rapid PCR-based detection assays",
+      "Antibiotic susceptibility profiling",
+      "Biofilm formation studies"
+    ],
+    "status": "active",
+    "start_date": "2023-01-15",
+    "end_date": "2024-12-31",
+    "principal_investigator": "Dr. Sarah Chen",
+    "funding_source": "National Institute of Health"
+  },
+  {
+    "id": 2,
+    "title": "Soil Microbial Ecology in Agriculture",
+    "shortDescription": "Analysis of microbial community dynamics in agricultural ecosystems",
+    "fullDescription": "This project investigates the diversity and function of microbial communities in different agricultural soil types. We study how microbial communities respond to various farming practices and their role in maintaining soil health and plant productivity.",
+    "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1174&q=80",
+    "tags": ["Soil Microbiology", "Agriculture", "Microbial Ecology", "Sustainable Farming"],
+    "category": "completed",
+    "details": [
+      "Soil sampling from organic and conventional farms",
+      "Metagenomic sequencing of soil samples",
+      "Functional gene analysis for nutrient cycling",
+      "Microbial community structure analysis",
+      "Correlation with soil chemical properties",
+      "Impact assessment of farming practices",
+      "Recommendations for sustainable agriculture"
+    ],
+    "status": "completed",
+    "start_date": "2022-03-01",
+    "end_date": "2023-02-28",
+    "principal_investigator": "Dr. Maria Rodriguez",
+    "funding_source": "Agricultural Research Council"
+  },
+  {
+    "id": 3,
+    "title": "Viral Pathogenesis Mechanisms",
+    "shortDescription": "Study of molecular mechanisms underlying viral infection and pathogenesis",
+    "fullDescription": "This research examines the molecular mechanisms of viral infection, focusing on respiratory viruses. We investigate virus-host interactions, immune evasion strategies, and develop potential therapeutic interventions.",
+    "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1025&q=80",
+    "tags": ["Virology", "Pathogenesis", "Immunology", "Molecular Biology"],
+    "category": "ongoing",
+    "details": [
+      "Virus isolation and propagation in cell culture",
+      "Gene expression analysis during infection",
+      "Host immune response profiling",
+      "Drug screening for antiviral compounds",
+      "Animal model development",
+      "Therapeutic target identification",
+      "Vaccine candidate evaluation"
+    ],
+    "status": "active",
+    "start_date": "2023-03-15",
+    "end_date": "2025-06-30",
+    "principal_investigator": "Dr. James Wilson",
+    "funding_source": "National Science Foundation"
+  },
+  {
+    "id": 4,
+    "title": "Foodborne Pathogen Genomics",
+    "shortDescription": "Genomic surveillance and tracking of foodborne bacterial pathogens",
+    "fullDescription": "This project uses next-generation sequencing to conduct genomic surveillance of foodborne pathogens. We track transmission patterns, identify outbreaks, and study antimicrobial resistance in foodborne bacteria.",
+    "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    "tags": ["Food Safety", "Genomics", "Pathogen Tracking", "Public Health"],
+    "category": "collaborative",
+    "details": [
+      "Pathogen isolation from food samples",
+      "Whole genome sequencing of isolates",
+      "Bioinformatic analysis and phylogenetics",
+      "Antimicrobial resistance gene detection",
+      "Outbreak investigation support",
+      "Data sharing with public health agencies",
+      "Method development for rapid detection"
+    ],
+    "status": "active",
+    "start_date": "2022-09-01",
+    "end_date": "2024-08-31",
+    "principal_investigator": "Dr. Robert Kim",
+    "funding_source": "Food and Drug Administration"
+  },
+  {
+    "id": 5,
+    "title": "Marine Microbiome Dynamics",
+    "shortDescription": "Study of microbial communities in marine ecosystems",
+    "fullDescription": "This research investigates the diversity, function, and dynamics of microbial communities in different marine habitats. We study their role in ocean biogeochemical cycles and responses to environmental changes.",
+    "image": "https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1029&q=80",
+    "tags": ["Marine Microbiology", "Ocean Science", "Microbiome", "Climate Change"],
+    "category": "ongoing",
+    "details": [
+      "Water sample collection from coastal and open ocean",
+      "Metagenomic and metatranscriptomic analysis",
+      "Functional profiling of microbial communities",
+      "Correlation with environmental parameters",
+      "Climate change impact assessment",
+      "Carbon cycling studies",
+      "Nutrient flux measurements"
+    ],
+    "status": "active",
+    "start_date": "2023-06-01",
+    "end_date": "2025-12-31",
+    "principal_investigator": "Dr. Maria Rodriguez",
+    "funding_source": "Ocean Research Institute"
+  },
+  {
+    "id": 6,
+    "title": "Point-of-Care Diagnostic Development",
+    "shortDescription": "Development of rapid diagnostic tests for infectious diseases",
+    "fullDescription": "This project focuses on creating rapid, affordable, and accurate diagnostic tests for common infectious diseases. The goal is to develop point-of-care tests that can be used in resource-limited settings.",
+    "image": "https://images.unsplash.com/photo-1585435557343-3b092031e83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    "tags": ["Diagnostics", "Point-of-Care", "Infectious Diseases", "Global Health"],
+    "category": "collaborative",
+    "details": [
+      "Antigen and antibody development",
+      "Lateral flow test strip optimization",
+      "Sensitivity and specificity testing",
+      "Field validation studies",
+      "Cost-effectiveness analysis",
+      "Regulatory approval process",
+      "Manufacturing scale-up planning"
+    ],
+    "status": "active",
+    "start_date": "2022-11-01",
+    "end_date": "2024-10-31",
+    "principal_investigator": "Dr. Sarah Chen",
+    "funding_source": "World Health Organization"
+  }
+]

@@ -1,25 +1,14 @@
-# Microbiology Research Laboratory
+# 🧬 Microbiology Research Laboratory
 
-![Lab Banner](assets/images/lab-banner.jpg)
+![Microbiology Lab Banner](assets/images/hero-banner.jpg)
 
-## 🧬 Overview
-Advanced Microbiology Research Laboratory website featuring research projects, team information, equipment details, publications, and an admin panel for content management.
+## 🌟 Overview
+**Microbiology Research Laboratory** is a modern, feature-rich website for showcasing advanced microbial research facilities, projects, and team information. Built with pure HTML, CSS, and JavaScript, it includes an admin panel for content management.
 
-## 🌟 Features
-
-### Main Website
-- **Responsive Design**: Mobile-first responsive layout
-- **Modern UI**: Clean, scientific-themed interface
-- **Dynamic Content**: JavaScript-powered project filtering
-- **Interactive Elements**: Modal popups, contact forms, alerts
-- **Performance**: Lazy loading images, optimized assets
-- **Accessibility**: WCAG compliant, keyboard navigation
-
-### Admin Panel
-- **Secure Login**: Protected admin dashboard
-- **CRUD Operations**: Add, edit, delete research projects
-- **Data Persistence**: LocalStorage-based project management
-- **User Management**: Session handling
-- **Dashboard Analytics**: Research statistics
+## 🚀 Live Demo
+- **Website**: `https://yourdomain.com`
+- **Admin Panel**: `https://yourdomain.com/admin-login.html`
+  - Username: `demo`
+  - Password: `As`
 
 ## 📁 Project Structure

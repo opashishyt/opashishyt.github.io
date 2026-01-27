@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Electron Microscope",
+    "description": "High-resolution imaging for microbial structure analysis",
+    "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1025&q=80",
+    "specs": {
+      "resolution": "0.1nm",
+      "magnification": "1,000,000x",
+      "voltage": "200 kV",
+      "type": "Transmission Electron Microscope"
+    },
+    "status": "operational",
+    "location": "Microscopy Suite",
+    "last_maintenance": "2023-10-15"
+  },
+  {
+    "id": 2,
+    "name": "PCR Machine",
+    "description": "Real-time PCR for DNA amplification and quantification",
+    "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    "specs": {
+      "capacity": "96 wells",
+      "temperature_range": "4-99°C",
+      "ramp_rate": "4°C/sec",
+      "type": "Thermal Cycler"
+    },
+    "status": "operational",
+    "location": "Molecular Biology Lab",
+    "last_maintenance": "2023-11-20"
+  },
+  {
+    "id": 3,
+    "name": "DNA Sequencer",
+    "description": "Next-generation sequencing for microbial genomics",
+    "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    "specs": {
+      "throughput": "50 Gb/run",
+      "read_length": "2x150 bp",
+      "run_time": "24 hours",
+      "type": "Illumina NovaSeq"
+    },
+    "status": "operational",
+    "location": "Genomics Lab",
+    "last_maintenance": "2023-09-10"
+  },
+  {
+    "id": 4,
+    "name": "Laminar Flow Hood",
+    "description": "Class II biosafety cabinet for sterile work",
+    "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    "specs": {
+      "class": "II Type A2",
+      "airflow": "0.45 m/s",
+      "filter": "HEPA",
+      "width": "1.2 meters"
+    },
+    "status": "operational",
+    "location": "BSL-2 Lab",
+    "last_maintenance": "2023-12-01"
+  }
+]

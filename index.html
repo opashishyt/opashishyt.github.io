@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microbiology Research Lab | Advanced Microbial Research Facility</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2e7d32">
+    <meta name="description" content="Advanced Microbiology Research Laboratory specializing in microbial analysis, pathogen research, and biotechnological innovations">
+    <meta name="keywords" content="Microbiology, Research Lab, Pathogen Analysis, Biotechnology, Microbial Research">
+    <meta name="author" content="Microbiology Research Lab">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Microbiology Research Lab">
+    <meta property="og:description" content="Advanced Microbiology Research Facility">
+    <meta property="og:image" content="assets/images/lab-banner.jpg">
+    <meta property="og:url" content="https://microbiologylab.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Microbiology Research Lab">
+    <meta name="twitter:description" content="Advanced Microbiology Research Facility">
+    <meta name="twitter:image" content="assets/images/lab-banner.jpg">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
+    
+    <!-- Preload -->
+    <link rel="preload" href="assets/images/hero-banner.jpg" as="image">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-microscope"></i>
+                <span>Microbiology Research Lab</span>
+            </div>
+            <div class="loading-progress">
+                <div class="progress-bar"></div>
+                <span>Loading Laboratory Systems...</span>
+            </div>
+            <div class="loading-tip">
+                <i class="fas fa-lightbulb"></i>
+                <span>Did you know? There are more microbial cells in your body than human cells!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">
+                    <div class="logo-icon">
+                        <i class="fas fa-microscope"></i>
+                        <div class="logo-pulse"></div>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-name">Microbiology Research Lab</span>
+                        <span class="logo-tagline">Exploring Microbial Frontiers</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="nav-controls">
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <!-- Search Button -->
+                <button class="search-toggle" id="searchToggle" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                
+                <!-- Notification Bell -->
+                <button class="notification-btn" id="notificationBtn" aria-label="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </button>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            
+            <!-- Search Overlay -->
+            <div class="search-overlay" id="searchOverlay">
+                <div class="search-container">
+                    <input type="search" placeholder="Search research projects, publications, team members..." 
+                           class="search-input" id="searchInput">
+                    <button class="search-close" id="searchClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+            
+            <!-- Notifications Panel -->
+            <div class="notifications-panel" id="notificationsPanel">
+                <div class="notifications-header">
+                    <h3>Notifications</h3>
+                    <button class="mark-all-read" id="markAllRead">Mark all as read</button>
+                </div>
+                <div class="notifications-list" id="notificationsList">
+                    <!-- Notifications will be loaded dynamically -->
+                </div>
+            </div>
+            
+            <!-- Main Navigation -->
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a></li>
+                <li><a href="#about" class="nav-link">
+                    <i class="fas fa-flask"></i>
+                    <span>About Lab</span>
+                </a></li>
+                <li><a href="#research" class="nav-link">
+                    <i class="fas fa-dna"></i>
+                    <span>Research</span>
+                </a></li>
+                <li><a href="#equipment" class="nav-link">
+                    <i class="fas fa-microscope"></i>
+                    <span>Equipment</span>
+                </a></li>
+                <li><a href="#team" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Team</span>
+                </a></li>
+                <li><a href="#publications" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    <span>Publications</span>
+                </a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>More</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="virtual-tour.html">
+                            <i class="fas fa-vr-cardboard"></i>
+                            Virtual Lab Tour
+                        </a></li>
+                        <li><a href="simulations.html">
+                            <i class="fas fa-vial"></i>
+                            Simulations
+                        </a></li>
+                        <li><a href="collaborations.html">
+                            <i class="fas fa-handshake"></i>
+                            Collaborations
+                        </a></li>
+                        <li><a href="careers.html">
+                            <i class="fas fa-briefcase"></i>
+                            Careers
+                        </a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a></li>
+                <li><a href="admin-login.html" class="nav-link admin-btn">
+                    <i class="fas fa-user-shield"></i>
+                    <span>Admin</span>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to <span class="highlight">Microbiology Research Lab</span></h1>
+                <p class="hero-subtitle">Advanced Research in Microbial Sciences & Biotechnology</p>
+                <p class="hero-description">Our state-of-the-art laboratory specializes in pathogen research, microbial analysis, and biotechnological innovations. We're committed to advancing scientific knowledge and developing solutions for global health challenges.</p>
+                <div class="hero-btns">
+                    <a href="#research" class="btn primary-btn">
+                        <i class="fas fa-flask"></i> Our Research
+                    </a>
+                    <a href="virtual-tour.html" class="btn secondary-btn">
+                        <i class="fas fa-vr-cardboard"></i> Virtual Tour
+                    </a>
+                    <a href="#contact" class="btn secondary-btn">
+                        <i class="fas fa-envelope"></i> Contact Lab
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Research Projects</p>
+                    </div>
+                    <div class="stat">
+                        <h3>25+</h3>
+                        <p>Publications</p>
+                    </div>
+                    <div class="stat">
+                        <h3>15+</h3>
+                        <p>Lab Equipment</p>
+                    </div>
+                    <div class="stat">
+                        <h3>10+</h3>
+                        <p>Research Staff</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1025&q=80" alt="Microbiology Laboratory" loading="lazy">
+                <div class="image-badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>BSL-2 Certified Lab</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Advanced <span class="highlight">Lab Features</span></h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3>Virtual Lab Tour</h3>
+                    <p>Explore our BSL-2 certified laboratory through immersive 360° virtual tour</p>
+                    <a href="virtual-tour.html" class="feature-link">
+                        Start Tour <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Live Dashboard</h3>
+                    <p>Real-time monitoring of ongoing experiments and research data</p>
+                    <button class="feature-link" onclick="openLiveDashboard()">
+                        View Dashboard <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Interactive Simulations</h3>
+                    <p>Run virtual experiments and microbial growth simulations</p>
+                    <a href="simulations.html" class="feature-link">
+                        Try Simulations <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Open Data</h3>
+                    <p>Access our research datasets and genomic sequences</p>
+                    <button class="feature-link" onclick="openDataPortal()">
+                        Browse Data <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Lab Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Our <span class="highlight">Research Lab</span></h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Lab Interior" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <h3>Advanced Microbiology Research Facility</h3>
+                    <p>Established in 2010, our Microbiology Research Lab has been at the forefront of microbial sciences research. We specialize in pathogen identification, antibiotic resistance studies, and environmental microbiology.</p>
+                    <p>Our lab is equipped with state-of-the-art instrumentation and follows strict biosafety protocols (BSL-2 certified). We collaborate with universities, hospitals, and research institutions worldwide.</p>
+                    
+                    <div class="about-details">
+                        <div class="detail">
+                            <i class="fas fa-calendar"></i>
+                            <div>
+                                <strong>Established:</strong>
+                                <span>2010</span>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <strong>Biosafety Level:</strong>
+                                <span>BSL-2 Certified</span>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>Research Team:</strong>
+                                <span>15+ Scientists</span>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <strong>Certifications:</strong>
+                                <span>ISO 9001:2015</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="research-areas">
+                        <h4><i class="fas fa-dna"></i> Research Areas:</h4>
+                        <div class="area-tags">
+                            <span class="area-tag">Pathogen Research</span>
+                            <span class="area-tag">Antibiotic Resistance</span>
+                            <span class="area-tag">Environmental Microbiology</span>
+                            <span class="area-tag">Microbial Genetics</span>
+                            <span class="area-tag">Virology</span>
+                            <span class="area-tag">Immunology</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="research">
+        <div class="container">
+            <h2 class="section-title">Our <span class="highlight">Research Projects</span></h2>
+            <p class="section-subtitle">Ongoing and completed research projects in microbiology</p>
+            
+            <div class="research-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="ongoing">Ongoing</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="collaborative">Collaborative</button>
+            </div>
+            
+            <div class="research-grid" id="projectsContainer">
+                <!-- Projects loaded dynamically via JavaScript -->
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading research projects...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section id="equipment" class="equipment">
+        <div class="container">
+            <h2 class="section-title">Lab <span class="highlight">Equipment</span></h2>
+            
+            <div class="equipment-grid">
+                <div class="equipment-card">
+                    <div class="equipment-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Electron Microscope</h3>
+                    <p>High-resolution imaging for microbial structure analysis</p>
+                    <div class="equipment-specs">
+                        <span>Resolution: 0.1nm</span>
+                        <span>Magnification: 1,000,000x</span>
+                    </div>
+                </div>
+                
+                <div class="equipment-card">
+                    <div class="equipment-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <h3>PCR Machine</h3>
+                    <p>Real-time PCR for DNA amplification and quantification</p>
+                    <div class="equipment-specs">
+                        <span>Capacity: 96 wells</span>
+                        <span>Temperature Range: 4-99°C</span>
+                    </div>
+                </div>
+                
+                <div class="equipment-card">
+                    <div class="equipment-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>DNA Sequencer</h3>
+                    <p>Next-generation sequencing for microbial genomics</p>
+                    <div class="equipment-specs">
+                        <span>Throughput: 50 Gb/run</span>
+                        <span>Read Length: 2x150 bp</span>
+                    </div>
+                </div>
+                
+                <div class="equipment-card">
+                    <div class="equipment-icon">
+                        <i class="fas fa-temperature-low"></i>
+                    </div>
+                    <h3>Incubators</h3>
+                    <p>Precision temperature control for microbial culture</p>
+                    <div class="equipment-specs">
+                        <span>Temperature: 4-70°C</span>
+                        <span>Capacity: 500L</span>
+                    </div>
+                </div>
+                
+                <div class="equipment-card">
+                    <div class="equipment-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3>Laminar Flow Hood</h3>
+                    <p>Class II biosafety cabinet for sterile work</p>
+                    <div class="equipment-specs">
+                        <span>Class: II Type A2</span>
+                        <span>Airflow: 0.45 m/s</span>
+                    </div>
+                </div>
+                
+                <div class="equipment-card">
+                    <div class="equipment-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <h3>Analytical Balances</h3>
+                    <p>High-precision weighing for chemical preparations</p>
+                    <div class="equipment-specs">
+                        <span>Precision: 0.0001g</span>
+                        <span>Capacity: 220g</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Research <span class="highlight">Team</span></h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. Sarah Chen" loading="lazy">
+                    </div>
+                    <h3>Dr. Sarah Chen</h3>
+                    <p class="member-role">Principal Investigator</p>
+                    <p class="member-bio">PhD in Microbiology, 15+ years research experience</p>
+                    <div class="member-expertise">
+                        <span>Antibiotic Resistance</span>
+                        <span>Pathogen Genomics</span>
+                    </div>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-google-scholar"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. James Wilson" loading="lazy">
+                    </div>
+                    <h3>Dr. James Wilson</h3>
+                    <p class="member-role">Senior Researcher</p>
+                    <p class="member-bio">PhD in Virology, specializes in viral pathogenesis</p>
+                    <div class="member-expertise">
+                        <span>Virology</span>
+                        <span>Immunology</span>
+                    </div>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-google-scholar"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. Maria Rodriguez" loading="lazy">
+                    </div>
+                    <h3>Dr. Maria Rodriguez</h3>
+                    <p class="member-role">Microbial Ecologist</p>
+                    <p class="member-bio">PhD in Environmental Microbiology</p>
+                    <div class="member-expertise">
+                        <span>Environmental Micro</span>
+                        <span>Microbial Ecology</span>
+                    </div>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-google-scholar"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. Robert Kim" loading="lazy">
+                    </div>
+                    <h3>Dr. Robert Kim</h3>
+                    <p class="member-role">Bioinformatician</p>
+                    <p class="member-bio">PhD in Computational Biology</p>
+                    <div class="member-expertise">
+                        <span>Bioinformatics</span>
+                        <span>Genomics</span>
+                    </div>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-google-scholar"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="publications">
+        <div class="container">
+            <h2 class="section-title">Recent <span class="highlight">Publications</span></h2>
+            
+            <div class="publications-list">
+                <div class="publication-item">
+                    <div class="pub-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="pub-content">
+                        <h3>Antibiotic Resistance in Hospital Environments</h3>
+                        <p class="pub-authors">Chen S., Wilson J., et al. (2023)</p>
+                        <p class="pub-journal">Journal of Medical Microbiology, 72(4), 215-230</p>
+                        <a href="#" class="pub-link">View Abstract <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="pub-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="pub-content">
+                        <h3>Microbial Diversity in Soil Ecosystems</h3>
+                        <p class="pub-authors">Rodriguez M., et al. (2023)</p>
+                        <p class="pub-journal">Environmental Microbiology Reports, 15(2), 89-102</p>
+                        <a href="#" class="pub-link">View Abstract <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="pub-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="pub-content">
+                        <h3>Viral Pathogenesis and Host Response</h3>
+                        <p class="pub-authors">Wilson J., Chen S. (2022)</p>
+                        <p class="pub-journal">Virology Journal, 19(1), 45-58</p>
+                        <a href="#" class="pub-link">View Abstract <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="pub-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="pub-content">
+                        <h3>Genomic Analysis of Multi-drug Resistant Bacteria</h3>
+                        <p class="pub-authors">Kim R., et al. (2022)</p>
+                        <p class="pub-journal">Genome Biology, 23(3), 156-170</p>
+                        <a href="#" class="pub-link">View Abstract <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Our <span class="highlight">Lab</span></h2>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Laboratory Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>opashishytff@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>8418078994</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Laboratory Address</h4>
+                            <p>Research Building, Science Complex<br>
+                            University Campus, Delhi, India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                            Saturday: 10:00 AM - 2:00 PM<br>
+                            Sunday: Closed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>Connect With Us</h4>
+                        <div class="social-icons">
+                            <a href="#" target="_blank" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" target="_blank" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" target="_blank" aria-label="ResearchGate">
+                                <i class="fab fa-researchgate"></i>
+                            </a>
+                            <a href="#" target="_blank" aria-label="Google Scholar">
+                                <i class="fab fa-google-scholar"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Inquiry to Lab</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="inquiry_type" required>
+                                <option value="">Select Inquiry Type</option>
+                                <option value="collaboration">Research Collaboration</option>
+                                <option value="sample_analysis">Sample Analysis Request</option>
+                                <option value="lab_visit">Lab Visit Request</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-microscope"></i>
+                    <span>Microbiology Research Lab</span>
+                </div>
+                <p class="footer-text">Advanced Research in Microbial Sciences & Biotechnology</p>
+                
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Lab</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#equipment">Equipment</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="admin-login.html">Admin</a></li>
+                    <li><a href="virtual-tour.html">Virtual Tour</a></li>
+                    <li><a href="simulations.html">Simulations</a></li>
+                </ul>
+                
+                <div class="footer-bottom">
+                    <p class="copyright">&copy; 2023 Microbiology Research Lab. All rights reserved.</p>
+                    <div class="lab-certifications">
+                        <span><i class="fas fa-shield-alt"></i> BSL-2 Certified</span>
+                        <span><i class="fas fa-certificate"></i> ISO 9001:2015</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Live Dashboard Modal -->
+    <div class="modal-overlay" id="dashboardModal">
+        <div class="modal-content dashboard-modal">
+            <button class="modal-close" onclick="closeDashboard()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="dashboard-content" id="liveDashboard">
+                <h2><i class="fas fa-chart-line"></i> Live Lab Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Active Experiments</h3>
+                        <div class="gauge" id="experimentsGauge"></div>
+                        <p>12/15 experiments running</p>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Temperature Control</h3>
+                        <div class="temp-reading">22.5°C</div>
+                        <p>Main Lab Temperature</p>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Equipment Status</h3>
+                        <div class="equipment-status">
+                            <div class="status-item online">Microscope</div>
+                            <div class="status-item online">PCR Machine</div>
+                            <div class="status-item offline">DNA Sequencer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Portal Modal -->
+    <div class="modal-overlay" id="dataModal">
+        <div class="modal-content data-modal">
+            <button class="modal-close" onclick="closeDataPortal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="data-content">
+                <h2><i class="fas fa-database"></i> Open Data Portal</h2>
+                <div class="data-sets">
+                    <div class="data-set">
+                        <h3>Genomic Sequences</h3>
+                        <p>Complete bacterial genomes</p>
+                        <button class="btn secondary-btn">Download</button>
+                    </div>
+                    <div class="data-set">
+                        <h3>Research Data</h3>
+                        <p>Experimental results and analyses</p>
+                        <button class="btn secondary-btn">Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <!-- Register Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(reg => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed:', err));
+        }
+    </script>
+</body>
+</html>

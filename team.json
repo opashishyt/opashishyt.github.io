@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Sarah Chen",
+    "role": "Principal Investigator",
+    "bio": "PhD in Microbiology, 15+ years research experience",
+    "image": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    "expertise": ["Antibiotic Resistance", "Pathogen Genomics", "Molecular Biology"],
+    "education": "PhD in Microbiology, Stanford University",
+    "email": "sarah.chen@lab.com",
+    "linkedin": "#",
+    "google_scholar": "#"
+  },
+  {
+    "id": 2,
+    "name": "Dr. James Wilson",
+    "role": "Senior Researcher",
+    "bio": "PhD in Virology, specializes in viral pathogenesis",
+    "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    "expertise": ["Virology", "Immunology", "Vaccine Development"],
+    "education": "PhD in Virology, Harvard University",
+    "email": "james.wilson@lab.com",
+    "linkedin": "#",
+    "google_scholar": "#"
+  }
+]

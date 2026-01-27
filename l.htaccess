@@ -1,0 +1,467 @@
+# ======================================================================
+# Microbiology Research Lab - Complete .htaccess Configuration
+# Version: 2.0.0
+# Author: Microbiology Research Lab
+# ======================================================================
+
+# Enable rewrite engine
+RewriteEngine On
+
+# ==================== SECURITY HEADERS ====================
+<IfModule mod_headers.c>
+    # Cross-Site Scripting Protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Prevent MIME-type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Frame protection
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permissions policy
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+    
+    # Content Security Policy
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'self';"
+    
+    # HSTS (HTTP Strict Transport Security) - Uncomment when using HTTPS
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Feature Policy (for older browsers)
+    Header always set Feature-Policy "camera 'none'; microphone 'none'; geolocation 'none'"
+</IfModule>
+
+# ==================== PERFORMANCE OPTIMIZATION ====================
+<IfModule mod_deflate.c>
+    # Enable compression
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+    
+    # Remove browser bugs
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+    Header append Vary User-Agent
+</IfModule>
+
+<IfModule mod_expires.c>
+    # Enable caching
+    ExpiresActive On
+    
+    # Default expiration: 1 hour
+    ExpiresDefault "access plus 1 hour"
+    
+    # HTML: 1 hour
+    ExpiresByType text/html "access plus 1 hour"
+    
+    # CSS & JavaScript: 1 month
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    # Images: 1 year
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # Fonts: 1 year
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/x-font-woff "access plus 1 year"
+    
+    # XML & JSON: 1 hour
+    ExpiresByType application/xml "access plus 1 hour"
+    ExpiresByType application/json "access plus 1 hour"
+</IfModule>
+
+# ==================== SECURITY RULES ====================
+# Block access to hidden files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to sensitive files
+<FilesMatch "\.(env|log|ini|htaccess|htpasswd|sql|bak|old|swp|swo|tmp)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to configuration files
+<FilesMatch "^(config|\.config|settings|\.settings)\.(php|js|json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Allow access only to specific JSON files
+<FilesMatch "\.json$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Allow projects.json (public data)
+<Files "projects.json">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# Block access to uploads directory
+<Directory "uploads">
+    Order deny,allow
+    Deny from all
+    
+    # Allow PHP to access if needed
+    <IfModule mod_php.c>
+        php_flag engine off
+    </IfModule>
+</Directory>
+
+# Block access to admin directory
+<IfModule mod_authz_core.c>
+    <Directory "admin">
+        Require all denied
+    </Directory>
+</IfModule>
+
+# ==================== ADMIN PROTECTION ====================
+# Uncomment and configure if you want password protection for admin
+# <FilesMatch "^(admin-login|admin-dashboard)\.html$">
+#     AuthType Basic
+#     AuthName "Microbiology Research Lab - Admin Area"
+#     AuthUserFile /path/to/.htpasswd
+#     Require valid-user
+#     
+#     # Additional security headers for admin
+#     <IfModule mod_headers.c>
+#         Header set X-Robots-Tag "noindex, nofollow"
+#         Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+#     </IfModule>
+# </FilesMatch>
+
+# ==================== URL REWRITING ====================
+# Remove .html extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
+
+# Force trailing slash
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ $1/ [R=301,L]
+
+# Remove www (uncomment if needed)
+# RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+# RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# Force HTTPS (uncomment when using SSL)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# ==================== ERROR PAGES ====================
+ErrorDocument 400 /error/400.html
+ErrorDocument 401 /error/401.html
+ErrorDocument 403 /error/403.html
+ErrorDocument 404 /error/404.html
+ErrorDocument 500 /error/500.html
+ErrorDocument 503 /error/maintenance.html
+
+# ==================== PREVENT DIRECTORY LISTING ====================
+Options -Indexes
+
+# ==================== DISABLE SERVER SIGNATURE ====================
+ServerSignature Off
+ServerTokens Prod
+
+# ==================== FILE UPLOAD LIMITS ====================
+<IfModule mod_php.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# ==================== CHARACTER ENCODING ====================
+AddDefaultCharset UTF-8
+
+# ==================== CROSS-ORIGIN RESOURCES ====================
+<IfModule mod_headers.c>
+    # Allow fonts from CDN
+    <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+# ==================== MIME TYPES ====================
+AddType application/javascript .js
+AddType text/css .css
+AddType image/svg+xml .svg .svgz
+AddType font/woff .woff
+AddType font/woff2 .woff2
+AddType application/json .json
+AddType application/x-font-ttf .ttf
+AddType application/x-font-otf .otf
+
+# WebP support
+AddType image/webp .webp
+
+# ==================== BROWSER CACHING ====================
+<IfModule mod_headers.c>
+    # Cache static files
+    <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|webp)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    
+    # Cache fonts
+    <FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    
+    # Don't cache HTML
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires 0
+    </FilesMatch>
+    
+    # Don't cache admin pages
+    <FilesMatch "^(admin-login|admin-dashboard)\.html$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
+    </FilesMatch>
+</IfModule>
+
+# ==================== PREVENT HOTLINKING ====================
+# Uncomment and replace 'yourdomain.com' with your actual domain
+# RewriteCond %{HTTP_REFERER} !^$
+# RewriteCond %{HTTP_REFERER} !^https?://(www\.)?yourdomain\.com/ [NC]
+# RewriteRule \.(jpg|jpeg|png|gif|webp|css|js)$ - [NC,F,L]
+
+# ==================== FILE SIZE LIMITS ====================
+LimitRequestBody 10485760  # 10MB limit
+
+# ==================== DISABLE TRACE AND TRACK ====================
+RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+RewriteRule .* - [F]
+
+# ==================== BLOCK BAD BOTS ====================
+RewriteCond %{HTTP_USER_AGENT} (AhrefsBot|MJ12bot|SemrushBot|DotBot|Baiduspider|YandexBot) [NC]
+RewriteRule .* - [F,L]
+
+# ==================== ENABLE KEEP-ALIVE ====================
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+</IfModule>
+
+# ==================== COMPRESSION LEVEL ====================
+<IfModule mod_deflate.c>
+    DeflateCompressionLevel 9
+    SetOutputFilter DEFLATE
+</IfModule>
+
+# ==================== CUSTOM RULES FOR MICROBIOLOGY LAB ====================
+# Protect JSON files except projects.json
+<FilesMatch "^(team|equipment)\.json$">
+    Order deny,allow
+    Deny from all
+    
+    # Allow localhost for development
+    RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
+    RewriteCond %{REMOTE_ADDR} !^::1$
+</FilesMatch>
+
+# Protect PWA files
+<FilesMatch "^(manifest\.json|service-worker\.js)$">
+    <IfModule mod_headers.c>
+        Header set Service-Worker-Allowed "/"
+        Header set X-Content-Type-Options "nosniff"
+    </IfModule>
+</FilesMatch>
+
+# ==================== REDIRECT OLD URLS ====================
+# If you have old URLs, you can redirect them here
+# Example:
+# Redirect 301 /old-page.html /new-page.html
+
+# ==================== MAINTENANCE MODE ====================
+# Uncomment to enable maintenance mode
+# RewriteCond %{REMOTE_ADDR} !^123\.456\.789\.000
+# RewriteCond %{REQUEST_URI} !^/maintenance\.html$
+# RewriteRule ^(.*)$ /maintenance.html [R=302,L]
+
+# ==================== SEO OPTIMIZATIONS ====================
+# Canonical URL redirect
+# RewriteCond %{HTTP_HOST} ^www\.yourdomain\.com$ [NC]
+# RewriteRule ^(.*)$ https://yourdomain.com/$1 [R=301,L]
+
+# ==================== PREVENT IMAGE HOTLINKING ====================
+SetEnvIfNoCase Referer "^$" local_ref=1
+SetEnvIfNoCase Referer "^https?://([^/]*\.)?yourdomain\.com" local_ref=1
+<FilesMatch "\.(gif|png|jpe?g)$">
+    Order Allow,Deny
+    Allow from env=local_ref
+    Allow from 127.0.0.1
+</FilesMatch>
+
+# ==================== BLOCK SCANNERS ====================
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ - [F,L]
+
+# ==================== PROTECT AGAINST SQL INJECTION ====================
+RewriteCond %{QUERY_STRING} (;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|cast|set|declare|drop|update|md5|benchmark) [NC,OR]
+RewriteCond %{QUERY_STRING} \.\.\/\.\. [OR]
+RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
+RewriteCond %{QUERY_STRING} \.[a-z0-9] [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (javascript:|vbscript:|onload=|onunload=|onerror=|onclick=|onblur=|onchange=|onfocus=) [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# ==================== CUSTOM ERROR LOGGING ====================
+# Uncomment to enable custom error logging
+# ErrorLog /path/to/your/error.log
+# LogLevel warn
+# CustomLog /path/to/your/access.log combined
+
+# ==================== PHP SETTINGS ====================
+<IfModule mod_php.c>
+    # Security settings
+    php_flag allow_url_fopen Off
+    php_flag allow_url_include Off
+    php_flag expose_php Off
+    php_flag register_globals Off
+    php_flag magic_quotes_gpc Off
+    php_flag session.cookie_httponly On
+    php_flag session.cookie_secure On
+    php_flag session.use_only_cookies On
+</IfModule>
+
+# ==================== GZIP COMPRESSION ====================
+<IfModule mod_gzip.c>
+    mod_gzip_on Yes
+    mod_gzip_dechunk Yes
+    mod_gzip_item_include file \.(html?|txt|css|js|php|pl)$
+    mod_gzip_item_include mime ^text/.*
+    mod_gzip_item_include mime ^application/x-javascript.*
+    mod_gzip_item_exclude mime ^image/.*
+    mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</IfModule>
+
+# ==================== PREVENT CLICKJACKING ====================
+<IfModule mod_headers.c>
+    Header always append X-Frame-Options SAMEORIGIN
+</IfModule>
+
+# ==================== RATE LIMITING ====================
+# Uncomment to enable rate limiting (requires mod_ratelimit)
+# <IfModule mod_ratelimit.c>
+#     <Location "/">
+#         SetOutputFilter RATE_LIMIT
+#         SetEnv rate-limit 100
+#     </Location>
+#     
+#     <Location "/admin-login.html">
+#         SetOutputFilter RATE_LIMIT
+#         SetEnv rate-limit 10
+#     </Location>
+# </IfModule>
+
+# ==================== CUSTOM 404 PAGE ====================
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /error/404.html [L]
+
+# ==================== PROTECT .HTACCESS ITSELF ====================
+<Files .htaccess>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# ==================== OPTIMIZE IMAGE DELIVERY ====================
+<IfModule mod_headers.c>
+    # Serve WebP images when available
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    RewriteCond %{REQUEST_FILENAME}\.webp -f
+    RewriteRule ^(.*)\.(jpe?g|png)$ $1.webp [T=image/webp,E=accept:1]
+    
+    <FilesMatch "\.(jpe?g|png)$">
+        Header append Vary Accept
+    </FilesMatch>
+</IfModule>
+
+# ==================== FINAL SECURITY HEADERS ====================
+<IfModule mod_headers.c>
+    # Prevent content type sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # XSS protection
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Referrer policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Feature policy
+    Header set Feature-Policy "camera 'none'; microphone 'none'; geolocation 'none'; payment 'none'"
+    
+    # Expect-CT header (for certificate transparency)
+    Header set Expect-CT "max-age=86400, enforce"
+</IfModule>
+
+# ==================== CUSTOM CACHE CONTROL ====================
+FileETag MTime Size
+<IfModule mod_headers.c>
+    <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|webp)$">
+        Header unset ETag
+        Header unset Last-Modified
+    </FilesMatch>
+</IfModule>
+
+# ==================== PREVENT BRUTE FORCE ====================
+# Block IP after 10 failed attempts (requires mod_evasive)
+# <IfModule mod_evasive20.c>
+#     DOSHashTableSize 3097
+#     DOSPageCount 5
+#     DOSSiteCount 100
+#     DOSPageInterval 2
+#     DOSSiteInterval 2
+#     DOSBlockingPeriod 600
+# </IfModule>
+
+# ==================== ENVIRONMENT VARIABLES ====================
+SetEnv TZ Asia/Kolkata
+SetEnv SERVER_ADMIN opashishytff@gmail.com
+
+# ==================== FINAL REWRITE RULES ====================
+# Ensure all requests go through index.html for SPA-like behavior
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]
+
+# ======================================================================
+# END OF .HTACCESS FILE
+# ======================================================================
+
+# Important Notes:
+# 1. Replace 'yourdomain.com' with your actual domain
+# 2. Uncomment SSL/TLS rules when using HTTPS
+# 3. Configure admin protection if needed
+# 4. Adjust file paths as per your server structure
+# 5. Test thoroughly after deployment
