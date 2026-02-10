@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FRP BYPASS BY ASHISH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Mobile First Design - No Zoom */
+        :root {
+            --primary: #2D5BFF;
+            --secondary: #8A2BE2;
+            --accent: #FF3B5C;
+            --success: #00C896;
+            --dark: #1A1A2E;
+            --light: #F8F9FF;
+            --card-bg: #FFFFFF;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --border-radius: 20px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            position: fixed;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.4;
+            padding: 0;
+        }
+        
+        /* Prevent Zoom */
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+        
+        /* Main Container */
+        .container {
+            width: 100%;
+            height: 100vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 15px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 28px;
+        }
+        
+        .title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .status-bar {
+            background: rgba(45, 91, 255, 0.1);
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .quick-btn {
+            background: var(--card-bg);
+            border: none;
+            border-radius: 16px;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.2s ease;
+        }
+        
+        .quick-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quick-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: white;
+            margin-bottom: 12px;
+        }
+        
+        .quick-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+        
+        .quick-desc {
+            font-size: 0.75rem;
+            color: #666;
+            opacity: 0.8;
+        }
+        
+        /* Apps Grid - ALL VISIBLE */
+        .apps-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Grid with all apps visible - 4 columns for better visibility */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        
+        /* For smaller screens, show 3 columns */
+        @media (max-width: 400px) {
+            .apps-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .app-btn {
+            background: var(--light);
+            border: none;
+            border-radius: 14px;
+            padding: 15px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.2s ease;
+            min-height: 100px;
+        }
+        
+        .app-btn:active {
+            background: rgba(45, 91, 255, 0.1);
+            transform: scale(0.96);
+        }
+        
+        .app-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+            margin-bottom: 8px;
+        }
+        
+        .app-name {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.2;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Downloads */
+        .downloads-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .download-list {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .download-item {
+            background: var(--light);
+            border-radius: 14px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .file-info {
+            flex: 1;
+        }
+        
+        .file-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+        
+        .file-size {
+            font-size: 0.7rem;
+            color: #666;
+        }
+        
+        .download-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Admin Button */
+        .admin-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), #FF6B8B);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0 8px 25px rgba(255, 59, 92, 0.4);
+            z-index: 1000;
+            border: none;
+        }
+        
+        .admin-float:active {
+            transform: scale(0.95);
+        }
+        
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            width: 100%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            background: var(--light);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-danger {
+            background: var(--accent);
+            color: white;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        /* Edit Mode */
+        .edit-mode .app-btn,
+        .edit-mode .quick-btn,
+        .edit-mode .download-item {
+            position: relative;
+        }
+        
+        .edit-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease;
+        }
+        
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .category-tab {
+            background: var(--light);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--dark);
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+        
+        .category-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .category-tab:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Panel Modal -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="color: var(--dark);">Admin Panel</h3>
+                <button onclick="closeModal('adminModal')" style="background: none; border: none; font-size: 24px; color: #666;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="adminLogin">
+                    <div class="form-group">
+                        <input type="text" class="form-input" id="adminUser" placeholder="Admin ID" value="opashishyt">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" id="adminPass" placeholder="Password" value="Ashish@2006">
+                    </div>
+                    <button class="btn btn-primary" onclick="adminLogin()">Login</button>
+                    <p id="loginError" style="color: var(--accent); text-align: center; margin-top: 15px; display: none;">Wrong credentials!</p>
+                </div>
+                
+                <div id="adminControls" style="display: none;">
+                    <!-- Quick Actions Management -->
+                    <h4 style="margin-bottom: 15px; color: var(--dark);">Quick Actions</h4>
+                    <div id="quickActionsEdit"></div>
+                    
+                    <!-- Apps Management -->
+                    <h4 style="margin-bottom: 15px; color: var(--dark); margin-top: 25px;">Apps Management</h4>
+                    <div id="appsEdit"></div>
+                    
+                    <!-- Downloads Management -->
+                    <h4 style="margin-bottom: 15px; color: var(--dark); margin-top: 25px;">Downloads Management</h4>
+                    <div id="downloadsEdit"></div>
+                    
+                    <!-- Add New Item -->
+                    <div style="background: var(--light); padding: 20px; border-radius: 12px; margin-top: 25px;">
+                        <h4 style="margin-bottom: 15px; color: var(--dark);">Add New Item</h4>
+                        <div class="form-group">
+                            <select class="form-input" id="newItemType">
+                                <option value="quick">Quick Action</option>
+                                <option value="app">App</option>
+                                <option value="download">Download File</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" id="newItemName" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" id="newItemUrl" placeholder="URL or Description">
+                        </div>
+                        <button class="btn btn-primary" onclick="addNewItem()">Add Item</button>
+                    </div>
+                    
+                    <!-- FRP Bypass Methods -->
+                    <div style="background: var(--light); padding: 20px; border-radius: 12px; margin-top: 25px;">
+                        <h4 style="margin-bottom: 15px; color: var(--dark);">FRP Bypass Methods</h4>
+                        <textarea class="form-input" id="frpMethods" placeholder="Add FRP bypass methods here..." rows="4"></textarea>
+                        <button class="btn btn-primary" onclick="saveFRPMethods()" style="margin-top: 15px;">Save Methods</button>
+                    </div>
+                    
+                    <button class="btn btn-danger" onclick="adminLogout()" style="margin-top: 25px;">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="editTitle" style="color: var(--dark);">Edit Item</h3>
+                <button onclick="closeModal('editModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-input" id="editName" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" id="editUrl" placeholder="URL">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" id="editIcon" placeholder="Icon (fa-class)">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" id="editColor" placeholder="Color (#RRGGBB)">
+                </div>
+                <button class="btn btn-primary" onclick="saveEdit()">Save Changes</button>
+                <button class="btn btn-danger" onclick="deleteItem()" style="margin-top: 10px;">Delete Item</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container" id="mainContainer">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-unlock-alt"></i>
+            </div>
+            <h1 class="title">FRP BYPASS BY ASHISH</h1>
+            <div class="subtitle">ADDROM BYPASS GOOGLE ACCOUNT 2026</div>
+            <div class="status-bar" id="status">
+                <i class="fas fa-bolt"></i>
+                <span>Ready! Tap any app to launch</span>
+            </div>
+        </header>
+        
+        <!-- Quick Actions -->
+        <div class="quick-actions" id="quickActions"></div>
+        
+        <!-- App Categories Tabs -->
+        <div class="category-tabs" id="categoryTabs"></div>
+        
+        <!-- All Apps - ALL VISIBLE -->
+        <section class="apps-section">
+            <h2 class="section-title">
+                <i class="fas fa-th"></i>
+                All Apps <span id="appCount" style="font-size: 0.9rem; color: var(--accent);">(0)</span>
+            </h2>
+            <div class="apps-grid" id="appsGrid"></div>
+        </section>
+        
+        <!-- Downloads -->
+        <section class="downloads-section">
+            <h2 class="section-title">
+                <i class="fas fa-download"></i>
+                Download Files
+            </h2>
+            <div class="download-list" id="downloadsList"></div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>FRP BYPASS BY ASHISH © 2026</p>
+        </footer>
+    </div>
+    
+    <!-- Admin Floating Button -->
+    <button class="admin-float" onclick="openModal('adminModal')">
+        <i class="fas fa-cog"></i>
+    </button>
+
+    <script>
+        // Prevent Zoom and Double Tap
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('touchmove', function(e) {
+            if(e.scale !== 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(e) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+        
+        // Data Storage
+        let quickActions = JSON.parse(localStorage.getItem('frp_quick_actions')) || [
+            {id: 'settings', name: 'Settings', desc: 'Open Settings', icon: 'fas fa-cog', color: '#2D5BFF', url: 'intent://settings#Intent;scheme=android-settings;end'},
+            {id: 'files', name: 'My Files', desc: 'File Manager', icon: 'fas fa-folder', color: '#00C896', url: 'file:///storage/emulated/0/'},
+            {id: 'chrome', name: 'Chrome', desc: 'Web Browser', icon: 'fab fa-chrome', color: '#4285F4', url: 'https://www.google.com'},
+            {id: 'youtube', name: 'YouTube', desc: 'Video Platform', icon: 'fab fa-youtube', color: '#FF0000', url: 'https://www.youtube.com'}
+        ];
+        
+        // ALL APPS - Everything in one array, all visible
+        let allApps = JSON.parse(localStorage.getItem('frp_all_apps')) || [
+            // Original Apps
+            {id: 'galaxy', name: 'Galaxy Store', icon: 'fas fa-store', color: '#6a11cb', url: 'https://galaxystore.samsung.com/', category: 'store'},
+            {id: 'search', name: 'Google Search', icon: 'fas fa-search', color: '#34A853', url: 'https://www.google.com', category: 'google'},
+            {id: 'gmail', name: 'Gmail V2', icon: 'fas fa-envelope', color: '#EA4335', url: 'https://mail.google.com/', category: 'google'},
+            {id: 'assistant', name: 'Assistant', icon: 'fas fa-microphone', color: '#4285F4', url: 'https://assistant.google.com/', category: 'google'},
+            {id: 'mifiles', name: 'Mi Files', icon: 'fas fa-folder-open', color: '#FF6B00', url: 'https://www.mi.com/in/apps/mi-file-manager/', category: 'file'},
+            {id: 'easyshare', name: 'EasyShare', icon: 'fas fa-share-alt', color: '#6A1B9A', url: 'https://www.vivo.com/in/support/faq/easyshare', category: 'share'},
+            {id: 'xshare', name: 'Xshare', icon: 'fas fa-share-square', color: '#00BFA5', url: '#', category: 'share'},
+            {id: 'shareme', name: 'ShareME', icon: 'fas fa-bolt', color: '#FF3D00', url: '#', category: 'share'},
+            {id: 'mimover', name: 'Mi Mover', icon: 'fas fa-sync-alt', color: '#2962FF', url: '#', category: 'transfer'},
+            {id: 'oppoclone', name: 'OPPO Clone', icon: 'fas fa-clone', color: '#00897B', url: '#', category: 'clone'},
+            {id: 'oneplus', name: 'OnePlus Clone', icon: 'fas fa-mobile-alt', color: '#F50057', url: '#', category: 'clone'},
+            {id: 'asusclone', name: 'ASUS Clone', icon: 'fas fa-copy', color: '#000000', url: '#', category: 'clone'},
+            {id: 'fileshorts', name: 'File Shorts', icon: 'fas fa-file-alt', color: '#FF9800', url: '#', category: 'file'},
+            {id: 'powershade', name: 'Power Shade', icon: 'fas fa-bell', color: '#7B1FA2', url: '#', category: 'tools'},
+            {id: 'packagedis', name: 'Package Disabler', icon: 'fas fa-ban', color: '#D32F2F', url: '#', category: 'tools'},
+            {id: 'motolaunch', name: 'Moto Launcher', icon: 'fas fa-th-large', color: '#1976D2', url: '#', category: 'launcher'},
+            {id: 'motosecure', name: 'Moto Secure', icon: 'fas fa-lock', color: '#388E3C', url: '#', category: 'security'},
+            {id: 'moto', name: 'Moto', icon: 'fas fa-motorcycle', color: '#F57C00', url: '#', category: 'moto'},
+            {id: 'motohello', name: 'Moto Hello', icon: 'fas fa-hand-paper', color: '#5D4037', url: '#', category: 'moto'},
+            
+            // Additional Apps - ALL VISIBLE
+            {id: 'calculator', name: 'Calculator', icon: 'fas fa-calculator', color: '#FFD700', url: '#', category: 'tools'},
+            {id: 'samsungnet', name: 'Samsung Net', icon: 'fas fa-globe', color: '#1428A0', url: 'https://www.samsung.com/', category: 'browser'},
+            {id: 'alliance', name: 'Alliance Shield', icon: 'fas fa-shield-alt', color: '#8A2BE2', url: '#', category: 'security'},
+            {id: 'hidden', name: 'Hidden Settings', icon: 'fas fa-user-secret', color: '#2F4F4F', url: '#', category: 'tools'},
+            {id: 'login', name: 'Login Account', icon: 'fas fa-user-circle', color: '#00CED1', url: '#', category: 'account'},
+            {id: 'launcher', name: 'Home Launcher', icon: 'fas fa-home', color: '#FF69B4', url: '#', category: 'launcher'},
+            {id: 'adbservice', name: 'Service Menu', icon: 'fas fa-code', color: '#32CD32', url: 'tel:*#0*#', category: 'tools'},
+            {id: 'qrscan', name: 'QR Scanner', icon: 'fas fa-qrcode', color: '#f093fb', url: '#', category: 'tools'},
+            {id: 'activity', name: 'Activity Mgr', icon: 'fas fa-tasks', color: '#4facfe', url: '#', category: 'tools'},
+            {id: 'smartlock', name: 'Smart Lock', icon: 'fas fa-lock', color: '#ff9a9e', url: '#', category: 'security'},
+            {id: 'alliancestore', name: 'Alliance Store', icon: 'fas fa-store', color: '#8A2BE2', url: '#', category: 'store'},
+            {id: 'fileshortcut', name: 'Files Shortcut', icon: 'fas fa-folder', color: '#a1c4fd', url: '#', category: 'file'}
+        ];
+        
+        let downloads = JSON.parse(localStorage.getItem('frp_downloads')) || [
+            {id: 'gam5', name: 'Android_5_GAM.apk', size: '15.2 MB', url: '#'},
+            {id: 'gam6', name: 'Android_6_GAM.apk', size: '16.8 MB', url: '#'},
+            {id: 'gam7', name: 'Android_7_GAM.apk', size: '18.5 MB', url: '#'},
+            {id: 'gam8910', name: 'Android_8_9_10_GAM.apk', size: '22.3 MB', url: '#'},
+            {id: 'apex', name: 'Apex_Launcher.apk', size: '12.7 MB', url: '#'},
+            {id: 'nova', name: 'Nova_Launcher.apk', size: '14.9 MB', url: '#'},
+            {id: 'es', name: 'ES_File_Explorer.apk', size: '28.4 MB', url: '#'},
+            {id: 'smart', name: 'Smart_Switch_Mobile.apk', size: '35.1 MB', url: '#'},
+            {id: 'powershade', name: 'Power_Shade.apk', size: '8.5 MB', url: '#', desc: '(Navigation Bar)'},
+            {id: 'iptvnav', name: 'IPTV_OTT_Navigator.apk', size: '42.6 MB', url: '#'},
+            {id: 'iptvsmart', name: 'IPTV_Smarters_Pro.apk', size: '38.9 MB', url: '#'}
+        ];
+        
+        // Categories for filtering
+        const categories = [
+            {id: 'all', name: 'All Apps', icon: 'fas fa-th'},
+            {id: 'google', name: 'Google', icon: 'fab fa-google'},
+            {id: 'file', name: 'File Managers', icon: 'fas fa-folder'},
+            {id: 'share', name: 'Share Apps', icon: 'fas fa-share-alt'},
+            {id: 'clone', name: 'Phone Clone', icon: 'fas fa-clone'},
+            {id: 'tools', name: 'Tools', icon: 'fas fa-tools'},
+            {id: 'launcher', name: 'Launchers', icon: 'fas fa-th-large'},
+            {id: 'security', name: 'Security', icon: 'fas fa-shield-alt'},
+            {id: 'store', name: 'Stores', icon: 'fas fa-store'},
+            {id: 'browser', name: 'Browsers', icon: 'fas fa-globe'},
+            {id: 'moto', name: 'Moto Apps', icon: 'fas fa-motorcycle'},
+            {id: 'account', name: 'Accounts', icon: 'fas fa-user'}
+        ];
+        
+        let currentCategory = 'all';
+        
+        // Admin State
+        let isAdminLoggedIn = false;
+        let isEditMode = false;
+        let currentEditItem = null;
+        let currentEditType = null;
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuickActions();
+            loadCategories();
+            loadAllApps();
+            loadDownloads();
+            updateAppCount();
+        });
+        
+        // Load Quick Actions
+        function loadQuickActions() {
+            const container = document.getElementById('quickActions');
+            container.innerHTML = '';
+            
+            quickActions.forEach((action, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'quick-btn fade-in';
+                btn.onclick = () => openApp(action);
+                btn.innerHTML = `
+                    <div class="quick-icon" style="background: ${action.color};">
+                        <i class="${action.icon}"></i>
+                    </div>
+                    <div class="quick-name">${action.name}</div>
+                    <div class="quick-desc">${action.desc}</div>
+                    ${isEditMode ? `<div class="edit-badge" onclick="editItem('quick', ${index}, event)">✎</div>` : ''}
+                `;
+                container.appendChild(btn);
+            });
+        }
+        
+        // Load Categories
+        function loadCategories() {
+            const container = document.getElementById('categoryTabs');
+            container.innerHTML = '';
+            
+            categories.forEach(category => {
+                const btn = document.createElement('button');
+                btn.className = `category-tab ${currentCategory === category.id ? 'active' : ''}`;
+                btn.onclick = () => filterByCategory(category.id);
+                btn.innerHTML = `<i class="${category.icon}"></i> ${category.name}`;
+                container.appendChild(btn);
+            });
+        }
+        
+        // Filter Apps by Category
+        function filterByCategory(categoryId) {
+            currentCategory = categoryId;
+            loadCategories();
+            loadAllApps();
+            updateAppCount();
+        }
+        
+        // Load All Apps - ALL VISIBLE
+        function loadAllApps() {
+            const container = document.getElementById('appsGrid');
+            container.innerHTML = '';
+            
+            // Filter apps based on category
+            let filteredApps = allApps;
+            if (currentCategory !== 'all') {
+                filteredApps = allApps.filter(app => app.category === currentCategory);
+            }
+            
+            filteredApps.forEach((app, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'app-btn fade-in';
+                btn.onclick = () => openApp(app);
+                btn.innerHTML = `
+                    <div class="app-icon" style="background: ${app.color};">
+                        <i class="${app.icon}"></i>
+                    </div>
+                    <div class="app-name">${app.name}</div>
+                    ${isEditMode ? `<div class="edit-badge" onclick="editItem('app', ${index}, event)">✎</div>` : ''}
+                `;
+                container.appendChild(btn);
+            });
+            
+            updateAppCount();
+        }
+        
+        // Update app count
+        function updateAppCount() {
+            let filteredApps = allApps;
+            if (currentCategory !== 'all') {
+                filteredApps = allApps.filter(app => app.category === currentCategory);
+            }
+            document.getElementById('appCount').textContent = `(${filteredApps.length})`;
+        }
+        
+        // Load Downloads
+        function loadDownloads() {
+            const container = document.getElementById('downloadsList');
+            container.innerHTML = '';
+            
+            downloads.forEach((file, index) => {
+                const item = document.createElement('div');
+                item.className = 'download-item fade-in';
+                item.innerHTML = `
+                    <div class="file-info">
+                        <div class="file-name">${file.name} ${file.desc || ''}</div>
+                        <div class="file-size">${file.size}</div>
+                    </div>
+                    <button class="download-btn" onclick="downloadFile('${file.url}')">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    ${isEditMode ? `<div class="edit-badge" onclick="editItem('download', ${index}, event)">✎</div>` : ''}
+                `;
+                container.appendChild(item);
+            });
+        }
+        
+        // Open App/Link
+        function openApp(item) {
+            if (isEditMode) return;
+            
+            updateStatus(`Opening ${item.name}...`);
+            
+            if (item.url && item.url !== '#') {
+                if (item.url.startsWith('http') || item.url.startsWith('file://')) {
+                    window.open(item.url, '_blank');
+                } else if (item.url.startsWith('intent:')) {
+                    window.location.href = item.url;
+                    setTimeout(() => {
+                        window.open('https://www.google.com/search?q=' + encodeURIComponent(item.name), '_blank');
+                    }, 1000);
+                } else if (item.url.startsWith('tel:')) {
+                    window.location.href = item.url;
+                } else {
+                    window.open('https://www.google.com/search?q=' + encodeURIComponent(item.name), '_blank');
+                }
+            } else {
+                window.open('https://www.google.com/search?q=' + encodeURIComponent(item.name + ' FRP bypass'), '_blank');
+            }
+        }
+        
+        // Download File
+        function downloadFile(url) {
+            if (url && url !== '#') {
+                window.open(url, '_blank');
+            } else {
+                updateStatus('Download link not available');
+            }
+        }
+        
+        // Update Status
+        function updateStatus(message) {
+            const status = document.getElementById('status');
+            status.innerHTML = `<i class="fas fa-bolt"></i> <span>${message}</span>`;
+            
+            setTimeout(() => {
+                status.innerHTML = `<i class="fas fa-bolt"></i> <span>Ready! Tap any app to launch</span>`;
+            }, 2000);
+        }
+        
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Admin Functions
+        function adminLogin() {
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+            
+            if (user === 'opashishyt' && pass === 'Ashish@2006') {
+                isAdminLoggedIn = true;
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminControls').style.display = 'block';
+                loadAdminEditViews();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+        
+        function adminLogout() {
+            isAdminLoggedIn = false;
+            isEditMode = false;
+            document.getElementById('adminLogin').style.display = 'block';
+            document.getElementById('adminControls').style.display = 'none';
+            document.getElementById('mainContainer').classList.remove('edit-mode');
+            closeModal('adminModal');
+            loadQuickActions();
+            loadAllApps();
+            loadDownloads();
+            updateStatus('Admin logged out');
+        }
+        
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            document.getElementById('mainContainer').classList.toggle('edit-mode', isEditMode);
+            loadQuickActions();
+            loadAllApps();
+            loadDownloads();
+        }
+        
+        // Load Admin Edit Views
+        function loadAdminEditViews() {
+            // Quick Actions Edit
+            const quickEdit = document.getElementById('quickActionsEdit');
+            quickEdit.innerHTML = '<button class="btn" onclick="toggleEditMode()" style="background: var(--light); margin-bottom: 10px;">Toggle Edit Mode</button>';
+            
+            quickActions.forEach((action, index) => {
+                const div = document.createElement('div');
+                div.className = 'download-item';
+                div.innerHTML = `
+                    <div class="file-info">
+                        <div class="file-name">${action.name}</div>
+                        <div class="file-size">${action.desc}</div>
+                    </div>
+                    <button class="download-btn" onclick="editItem('quick', ${index})">Edit</button>
+                `;
+                quickEdit.appendChild(div);
+            });
+            
+            // Apps Edit
+            const appsEdit = document.getElementById('appsEdit');
+            appsEdit.innerHTML = '';
+            
+            allApps.forEach((app, index) => {
+                const div = document.createElement('div');
+                div.className = 'download-item';
+                div.innerHTML = `
+                    <div class="file-info">
+                        <div class="file-name">${app.name}</div>
+                        <div class="file-size">${app.category} - ${app.url}</div>
+                    </div>
+                    <button class="download-btn" onclick="editItem('app', ${index})">Edit</button>
+                `;
+                appsEdit.appendChild(div);
+            });
+            
+            // Downloads Edit
+            const downloadsEdit = document.getElementById('downloadsEdit');
+            downloadsEdit.innerHTML = '';
+            
+            downloads.forEach((file, index) => {
+                const div = document.createElement('div');
+                div.className = 'download-item';
+                div.innerHTML = `
+                    <div class="file-info">
+                        <div class="file-name">${file.name}</div>
+                        <div class="file-size">${file.size}</div>
+                    </div>
+                    <button class="download-btn" onclick="editItem('download', ${index})">Edit</button>
+                `;
+                downloadsEdit.appendChild(div);
+            });
+        }
+        
+        // Edit Item
+        function editItem(type, index, event = null) {
+            if (event) event.stopPropagation();
+            
+            currentEditType = type;
+            currentEditItem = index;
+            
+            let item;
+            switch(type) {
+                case 'quick':
+                    item = quickActions[index];
+                    document.getElementById('editTitle').textContent = 'Edit Quick Action';
+                    break;
+                case 'app':
+                    item = allApps[index];
+                    document.getElementById('editTitle').textContent = 'Edit App';
+                    break;
+                case 'download':
+                    item = downloads[index];
+                    document.getElementById('editTitle').textContent = 'Edit Download';
+                    break;
+            }
+            
+            document.getElementById('editName').value = item.name || '';
+            document.getElementById('editUrl').value = item.url || item.description || '';
+            document.getElementById('editIcon').value = item.icon || '';
+            document.getElementById('editColor').value = item.color || '#2D5BFF';
+            
+            closeModal('adminModal');
+            openModal('editModal');
+        }
+        
+        // Save Edit
+        function saveEdit() {
+            const name = document.getElementById('editName').value;
+            const url = document.getElementById('editUrl').value;
+            const icon = document.getElementById('editIcon').value;
+            const color = document.getElementById('editColor').value;
+            
+            let item;
+            switch(currentEditType) {
+                case 'quick':
+                    quickActions[currentEditItem] = {
+                        ...quickActions[currentEditItem],
+                        name,
+                        desc: url,
+                        icon: icon || 'fas fa-cog',
+                        color,
+                        url: url
+                    };
+                    localStorage.setItem('frp_quick_actions', JSON.stringify(quickActions));
+                    loadQuickActions();
+                    break;
+                case 'app':
+                    allApps[currentEditItem] = {
+                        ...allApps[currentEditItem],
+                        name,
+                        icon: icon || 'fas fa-mobile-alt',
+                        color,
+                        url
+                    };
+                    localStorage.setItem('frp_all_apps', JSON.stringify(allApps));
+                    loadAllApps();
+                    break;
+                case 'download':
+                    downloads[currentEditItem] = {
+                        ...downloads[currentEditItem],
+                        name,
+                        url
+                    };
+                    localStorage.setItem('frp_downloads', JSON.stringify(downloads));
+                    loadDownloads();
+                    break;
+            }
+            
+            closeModal('editModal');
+            updateStatus('Item updated successfully!');
+            loadAdminEditViews();
+        }
+        
+        // Delete Item
+        function deleteItem() {
+            if (!confirm('Are you sure you want to delete this item?')) return;
+            
+            switch(currentEditType) {
+                case 'quick':
+                    quickActions.splice(currentEditItem, 1);
+                    localStorage.setItem('frp_quick_actions', JSON.stringify(quickActions));
+                    loadQuickActions();
+                    break;
+                case 'app':
+                    allApps.splice(currentEditItem, 1);
+                    localStorage.setItem('frp_all_apps', JSON.stringify(allApps));
+                    loadAllApps();
+                    break;
+                case 'download':
+                    downloads.splice(currentEditItem, 1);
+                    localStorage.setItem('frp_downloads', JSON.stringify(downloads));
+                    loadDownloads();
+                    break;
+            }
+            
+            closeModal('editModal');
+            updateStatus('Item deleted successfully!');
+            loadAdminEditViews();
+        }
+        
+        // Add New Item
+        function addNewItem() {
+            const type = document.getElementById('newItemType').value;
+            const name = document.getElementById('newItemName').value;
+            const url = document.getElementById('newItemUrl').value;
+            
+            if (!name || !url) {
+                alert('Please fill all fields');
+                return;
+            }
+            
+            const newId = name.toLowerCase().replace(/[^a-z0-9]/g, '') + Date.now();
+            
+            switch(type) {
+                case 'quick':
+                    quickActions.push({
+                        id: newId,
+                        name,
+                        desc: url,
+                        icon: 'fas fa-star',
+                        color: '#' + Math.floor(Math.random()*16777215).toString(16),
+                        url
+                    });
+                    localStorage.setItem('frp_quick_actions', JSON.stringify(quickActions));
+                    loadQuickActions();
+                    break;
+                case 'app':
+                    allApps.push({
+                        id: newId,
+                        name,
+                        icon: 'fas fa-mobile-alt',
+                        color: '#' + Math.floor(Math.random()*16777215).toString(16),
+                        url,
+                        category: 'tools'
+                    });
+                    localStorage.setItem('frp_all_apps', JSON.stringify(allApps));
+                    loadAllApps();
+                    break;
+                case 'download':
+                    downloads.push({
+                        id: newId,
+                        name,
+                        size: 'New File',
+                        url
+                    });
+                    localStorage.setItem('frp_downloads', JSON.stringify(downloads));
+                    loadDownloads();
+                    break;
+            }
+            
+            document.getElementById('newItemName').value = '';
+            document.getElementById('newItemUrl').value = '';
+            
+            updateStatus(`New ${type} added: ${name}`);
+            loadAdminEditViews();
+        }
+        
+        // Save FRP Methods
+        function saveFRPMethods() {
+            const text = document.getElementById('frpMethods').value;
+            if (!text) return;
+            
+            updateStatus('FRP methods saved!');
+        }
+    </script>
+</body>
+</html>
