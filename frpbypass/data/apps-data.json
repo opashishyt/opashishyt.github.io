@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Galaxy Store",
+    "icon": "fas fa-store",
+    "color": "samsung",
+    "url": "intent://com.sec.android.app.samsungapps/#Intent;scheme=android-app;end",
+    "desc": "Open Galaxy Store",
+    "category": "Samsung",
+    "number": 1
+  },
+  {
+    "id": 2,
+    "name": "Google Quick Search Box",
+    "icon": "fab fa-google",
+    "color": "google",
+    "url": "intent://com.google.android.googlequicksearchbox/#Intent;scheme=android-app;end",
+    "desc": "Open Google Quick Search Box",
+    "category": "Google",
+    "number": 2
+  }
+]
