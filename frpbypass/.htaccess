@@ -1,0 +1,40 @@
+# Apache Server Configuration
+# Use only if you have .htaccess support
+
+# Disable directory browsing
+Options -Indexes
+
+# Block access to sensitive files
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|bak|config|yml|md|map|js\.map|css\.map)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Block bots
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} ^.*(bot|crawler|spider|scraper|curl|wget|python|java|perl|php|ruby).*$ [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# Block hotlinking
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?yourdomain\.com [NC]
+RewriteRule \.(jpg|jpeg|png|gif|css|js)$ - [F]
+
+# Security headers
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "DENY"
+Header set X-XSS-Protection "1; mode=block"
+Header set Referrer-Policy "no-referrer"
+Header set Cache-Control "no-cache, no-store, must-revalidate"
+Header set Pragma "no-cache"
+Header set Expires "0"
+
+# Disable ETags
+Header unset ETag
+FileETag None
+
+# Block access to hidden files
+RedirectMatch 404 /\..*$ 
+
+# Prevent image theft
+RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F]

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Security Headers (Meta) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, notranslate, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, notranslate">
+  <meta name="google" content="notranslate">
+  
+  <!-- Disable Cache -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
+  <title>FRP BYPASS BY ASHISH</title>
+  
+  <!-- External CSS (Minified) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  
+  <!-- Dynamic Watermark -->
+  <style>
+    .watermark {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      opacity: 0.1;
+      z-index: 9999;
+      pointer-events: none;
+      font-size: 12px;
+      color: #000;
+      transform: rotate(-45deg);
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Anti-Download Protection -->
+<div id="anti-download" style="display:none;" data-protection="enabled"></div>
+
+<!-- Dynamic Session ID -->
+<script>
+  // Generate unique session ID
+  window._session = btoa(Date.now().toString() + Math.random().toString());
+  sessionStorage.setItem('session', window._session);
+</script>
+
+<div class="app" id="app-container">
+  <!-- Your App Content Here -->
+</div>
+
+<!-- Hidden Protection Elements -->
+<div class="protection-layer" style="display:none;"></div>
+<div class="debug-protection" style="display:none;"></div>
+
+<!-- Protection Scripts (Obfuscated & Minified) -->
+<script src="protection/anti-download.js"></script>
+<script src="protection/disable-inspect.js"></script>
+<script src="protection/watermark.js"></script>
+<script src="protection/encrypt.js"></script>
+<script src="js/script.min.js"></script>
+
+<!-- Footer Protection -->
+<script>
+  // Disable right click completely
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  
+  // Disable keyboard shortcuts
+  document.addEventListener('keydown', function(e) {
+    // Ctrl+S, Ctrl+U, Ctrl+Shift+I, F12, Ctrl+Shift+J, Ctrl+Shift+C
+    const forbidden = [
+      e.ctrlKey && e.key === 's',
+      e.ctrlKey && e.key === 'u',
+      e.ctrlKey && e.shiftKey && e.key === 'I',
+      e.key === 'F12',
+      e.ctrlKey && e.shiftKey && e.key === 'J',
+      e.ctrlKey && e.shiftKey && e.key === 'C'
+    ];
+    
+    if (forbidden.includes(true)) {
+      e.preventDefault();
+      return false;
+    }
+  });
+  
+  // Anti-devtools
+  setInterval(function() {
+    const start = performance.now();
+    debugger;
+    const end = performance.now();
+    if (end - start > 100) {
+      document.body.innerHTML = '<h1 style="color:red;text-align:center;margin-top:50px;">❌ Development Tools Detected!</h1>';
+    }
+  }, 1000);
+</script>
+
+<!-- Watermark -->
+<div class="watermark" id="dynamicWatermark">
+  © ASHISH FRP BYPASS 2026
+</div>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+# ====== GITHUB PAGES CONFIGURATION ======
+# Protected Site Configuration
+# Version: 2.0.0
+
+# Theme Settings
+theme: null
+remote_theme: null
+
+# Build Settings
+markdown: none
+highlighter: none
+
+# Disable Jekyll processing
+exclude:
+  - README.md
+  - LICENSE
+  - deploy.sh
+  - deploy.bat
+  - package.json
+  - node_modules
+  - .gitignore
+  - .github/
+  - protection/source/
+  - source/
+  - src/
+  - *.map
+  - *.config.js
+  - *.log
+
+# Include only necessary files
+include:
+  - .nojekyll
+  - robots.txt
+  - 404.html
+
+# Disable directory listing
+show_dir_listing: false
+
+# Security Headers
+webrick:
+  headers:
+    X-Content-Type-Options: nosniff
+    X-Frame-Options: DENY
+    X-XSS-Protection: "1; mode=block"
+    Referrer-Policy: no-referrer
+    Cache-Control: "no-cache, no-store, must-revalidate, max-age=0"
+    Pragma: no-cache
+    Expires: "0"
+    Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'"
+    Permissions-Policy: "geolocation=(), microphone=(), camera=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()"
+
+# Disable RSS
+feed:
+  enable: false
+
+# Disable sitemap
+sitemap: false
+sass:
+  sass_dir: 
+  style: compressed
+
+# No collections
+collections: []
+
+# Default front matter
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: null
+      sitemap: false
+      robots: noindex, nofollow, noarchive, nosnippet, notranslate, noimageindex
+
+# Plugins
+plugins: []
+
+# Gems
+gems: []
+
+# Timezone
+timezone: Asia/Kolkata
+
+# Encoding
+encoding: UTF-8
+
+# Silent mode
+quiet: true
+verbose: false
+
+# Disable incremental build
+incremental: false
+
+# Disable future posts
+future: false
+
+# Disable unpublished posts
+unpublished: false
