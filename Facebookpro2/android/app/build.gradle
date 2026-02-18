@@ -1,0 +1,28 @@
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.facebook.pro2"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    dependencies {
+        implementation project(':react-native-fs')
+        implementation project(':react-native-vector-icons')
+        implementation project(':react-native-video')
+        implementation project(':react-native-image-picker')
+        implementation project(':@react-native-async-storage_async-storage')
+        
+        // Firebase
+        implementation platform('com.google.firebase:firebase-bom:32.0.0')
+        implementation 'com.google.firebase:firebase-analytics'
+        implementation 'com.google.firebase:firebase-auth'
+        implementation 'com.google.firebase:firebase-database'
+        implementation 'com.google.firebase:firebase-storage'
+    }
+}
+
+apply plugin: 'com.google.gms.google-services'
